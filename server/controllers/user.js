@@ -1,13 +1,13 @@
 import User from "../models/User.js";
 
 const postSignup = async (req, res) => {
-    const { fullName, email, password, age } = req.body;
+    const { fullName, email, password, number } = req.body;
 
     const user = new User({
         fullName,
         email,
         password,
-        age
+        number
     });
 
     try {
