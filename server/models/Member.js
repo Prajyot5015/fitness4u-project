@@ -1,7 +1,9 @@
 import { Schema, model } from "mongoose"
 
+
+
 const userSchema = new Schema({
-    name: {
+    uname: {
         type: String,
         required: true
     },
@@ -18,13 +20,17 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    months:  {
+    months: {
         type: String,
         required: true
     },
-    totalAmount:  {
+    totalAmount: {
         type: Number,
         required: true
+    },
+    mode: {
+        type: String,
+        enum: ["online", "offline"]
     },
     user: {
         type: Schema.Types.ObjectId,

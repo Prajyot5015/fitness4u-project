@@ -22,7 +22,7 @@ const postSignup = async (req, res) => {
     catch (e) {
         res.json({
             success: false,
-            message: e.message,
+            message: "Sorry,This Email is already exists",
             data: null
         })
     }

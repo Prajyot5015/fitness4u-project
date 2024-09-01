@@ -93,6 +93,20 @@ input ,textarea {
     height: 40px;
     margin-right: 20px;
 }
+.share-receipt {
+    color: #fff;
+    text-decoration: none;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; 
+    }
+    50% {
+        opacity: 0; 
+    }
+}
 
 /* Media Query */
 @media screen and (max-width: 678px) {
