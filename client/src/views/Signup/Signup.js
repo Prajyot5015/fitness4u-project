@@ -1,92 +1,3 @@
-// import React, { useState } from 'react'
-// import './Signup.css'
-// import axios from 'axios'
-// import toast, { Toaster } from 'react-hot-toast'
-// import { Link } from 'react-router-dom'
-
-// function Signup() {
-
-//     const [user, setUser] = useState({
-//         fullName: '',
-//         email: '',
-//         password: '',
-//         age: ''
-//     })
-
-//     const signup = async () => {
-//         const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
-//             fullName: user.fullName,
-//             email: user.email,
-//             password: user.password,
-//             age: user.age
-//         })
-
-//         if (response.data.success) {
-//             toast.success(response.data.message)
-
-//             setUser({
-//                 fullName: '',
-//                 email: '',
-//                 password: '',
-//                 age: ''
-//             })
-//         }
-//         else {
-//             toast.error(response.data.message)
-//         }
-//     }
-
-//     return (
-//         <div className='signup-container'>
-//             <h2>User Registration</h2>
-
-//             <form >
-//                 <input
-//                     type="text"
-//                     placeholder="Fullname"
-//                     value={user.fullName}
-//                     onChange={(e) => setUser({ ...user, fullName: e.target.value })}
-//                 />
-
-//                 <input
-//                     type="email"
-//                     placeholder="Email"
-//                     value={user.email}
-//                     onChange={(e) => setUser({ ...user, email: e.target.value })}
-//                 />
-
-//                 <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={user.password}
-//                     onChange={(e) => setUser({ ...user, password: e.target.value })}
-//                 />
-
-//                 <input
-//                     type="text"
-//                     placeholder="Age"
-//                     value={user.age}
-//                     onChange={(e) => setUser({ ...user, age: e.target.value })}
-//                 />
-
-//                 <button
-//                     type='button'
-//                     onClick={signup}
-//                     className='link-btn'
-//                 >
-//                     Register
-//                 </button>
-//             </form>
-
-//             <Link to='/login'>Already have an account? Login</Link>
-
-//             <Toaster />
-//         </div>
-//     )
-// }
-
-// export default Signup
-
 import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
@@ -107,7 +18,6 @@ function Signup() {
     };
 
     const validateNumber = (number) => {
-        // A simple pattern for validating a mobile number (10 digits, starting with a digit from 6-9)
         const pattern = /^[6-9]\d{9}$/;
         return pattern.test(number);
     };
@@ -140,7 +50,7 @@ function Signup() {
                     number: ''
                 });
             } else {
-                toast.error(response.data.message);
+                toast.error("Sorry, Email already Exist...");
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.');

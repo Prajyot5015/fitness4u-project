@@ -12,430 +12,89 @@ body {
     color: #fff;
 }
 
-.btn {
-    color: #fff;
-    background: #f13a11;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 700;
-    cursor: pointer;
-}
+/* Start Header Section */
 
-.btn:hover {
-    background: #fff;
-    color: #f13a11;
-}
-
-.back {
-    background-image: url(./bg-home.webp); 
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-}
-
-.back .overlay {
-    background: #171819;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.5;
-}
-
-.mid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.mid p {
-    color: #7f8c8d;
-    font-size: 20px;
-    margin-bottom: 10px;
-
-}
-
-.mid h2 {
-    color: #fff;
-    font-size: 50px;
-}
-
-.four {
-    color: #f13a11;
-}
-
-.mid .btn-container {
-    margin-top: 25px;
-}
-
-.mid .btn-container a {
-    text-decoration: none;
-    text-transform: uppercase;
-
-}
-
-.mid .btn-container .simple {
-    color: #fff;
-    font-weight: 500;
-    padding: 10px 20px;
-}
-
-.mid .btn-container .simple:hover {
-    color: #ff5733;
-}
-
-.mid .btn-container .border {
-    color: #fff;
-    background: #f13a11;
-    padding: 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.mid .btn-container .border:hover {
-    background: #fff;
-    color: #f13a11;
-}
-
-.details {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 100px 200px;
-}
-
-.details .one {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.details .one h3 {
-    font-size: 40px;
-    padding-bottom: 18px;
-}
-
-.details .one h6 {
-    font-size: 20px;
-    font-weight: 400;
-    padding-bottom: 20px;
-}
-
-.details .one p {
-    color: #666262;
-    font-size: 20px;
-    padding-bottom: 50px;
-}
-
-.details .two {
-    width: 45%;
-    border-left: 1px solid#666262;
-    padding-left: 65px;
-}
-
-.details .two h3 {
-    font-size: 40px;
-}
-
-.details .two h5 {
-    font-size: 18px;
-}
-
-.details .two p {
-    font-size: 18px;
-    color: #666262;
-    margin-bottom: 12px;
-}
-
-.trainer {
-    padding: 20px 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.trainer .about {
-    width: 40%;
-
-}
-
-.trainer .about h2 {
-    font-size: 35px;
-    padding-bottom: 30px;
-}
-
-.trainer .about p {
-    color: #7f8c8d;
-    font-size: 18px;
-}
-
-.trainer .about .btn {
-    display: block;
-    margin: 15px auto;
-}
-
-a {
-    text-decoration: none;
-}
-
-.trainer .people {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.trainer .people .team1 {
-    width: 45%;
-    height: auto;
-    box-sizing: border-box;
-    background: #424242;
-    border-radius: 10px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-
-}
-
-.trainer .people .team1 .img img {
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    object-fit: cover;
-}
-
-.trainer .people .team1 .name,
-.trainer .people .team1 .pro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.trainer .people .team1 .name {
-    padding: 5px 20px 0 20px;
-}
-
-.trainer .people .team1 .name h4 {
-    font-size: 20px;
-}
-
-.trainer .people .team1 .name i,
-.trainer .people .team1 .pro i {
-    font-size: 20px;
-    cursor: pointer;
-    color: #fff;
-}
-
-.trainer .people .team1 .pro {
-    padding: 5px 20px 5px 20px;
-}
-
-.description {
-    text-align: center;
-    font-weight: bolder;
-    padding: 10px;
-}
-
-
-.protein-container {
-    margin: 70px 0;
-}
-
-.protein-card {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.protein-card .card {
-    width: 400px;
-    height: 210px;
-    border: none;
-    background: #424242;
-    border-radius: 10px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    margin: 10px;
-}
-
-.protein-card .card h2 {
-    font-size: 20px;
-    font-weight: bolder;
-    padding-top: 20px;
-    text-transform: uppercase;
-}
-.protein-card .card a{
-    text-decoration: none;
-    color: #fff;
-  
-}
-.protein-card .card a:hover{
-    color: #f13a11;
-}
-.protein-card .card img{
-    display: block;
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 70px;
-}
-.heading-process {
-    text-align: center;
-    padding: 20px;
-}
-
-.processes {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.processes .card {
-    width: 200px;
-    height: 180px;
-    background: #424242;
-    border-radius: 5px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    margin: 10px;
-}
-
-.processes .card i {
-    margin: 30px;
-    padding: 15px;
-    background-color: #f13a11;
-    border-radius: 50%;
-    font-size: 40px;
-}
-
-.processes .card h2 {
-    font-size: 15px;
-    text-transform: uppercase;
-}
-
-
-/*Start Footer */
-
-footer {
-    background: #343434;
-    padding-top: 50px;
-    margin-top: 30px;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    list-style: none;
-}
-
-.footer-container {
-    margin: auto;
+    padding: 15px 10px;
+    background: #7f8c8d;
     display: flex;
     justify-content: space-around;
-}
-
-.footer-content h3 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #f18930;
-    text-align: center;
-}
-
-.footer-content p {
-    width: 200px;
-    margin: auto;
-    padding: 7px;
-}
-.contact{
-    display: flex;
     align-items: center;
-}
-.contact i {
-    padding-right: 10px;
+    z-index: 100;
 }
 
-.contact span {
-    margin-left: 30px;
-}
-
-.footer-content ul {
-    text-align: center;
-}
-
-.footer-content .list {
-    padding: 0;
-}
-
-.footer-content .list li {
-    width: auto;
-    text-align: center;
-    list-style-type: none;
-    padding: 7px;
-
-}
-
-.footer-content a {
+.header a {
+    font-size: 25px;
+    color: #fff;
     text-decoration: none;
-    color: #fff;
+    font-weight: bolder;
+    padding: 0 20px;
 }
 
-.footer-content a:hover {
-    color: #f18930;
-}
-
-.social-media {
-    margin-top: 40px;
-}
-
-.social-media ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-.social-media ul li{
-    list-style: none;
-}
-.social-media ul li a {
-    font-size: 15px;
-    padding: 8px;
-    margin-right: 20px;
-    background-color: transparent;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.social-media ul li a:hover {
-    background-color: #fff;
-    color: #000;
-
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 50px;
-    background-color: rgb(66, 66, 66);
-}
-
-.footer-bottom p {
-    color: #fff;
-    margin: 0;
-    font-size: 16px;
-    padding: 7px;
-}
-
-.footer-bottom .fa-heart {
+.header span {
     color: red;
-    font-size: 20px;
 }
 
-/* End Footer */
+.fa-dumbbell {
+    padding-right: 5px;
+}
+
+.navbar a {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 3px 20px;
+    transition: all 0.3s ease;
+}
+
+.darkLight {
+    width: 70px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.navbar a:hover {
+    border: 1px solid #212529;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    transition: all 0.3s ease;
+}
+
+.moon {
+    font-size: 25px;
+    color: #fff;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+#check {
+    display: none;
+}
+
+.menu-bar {
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    display: none;
+}
+.fa-right-from-bracket{
+    margin-left: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #f5370c;
+    font-size: 23px;
+}
+/*End Header Section */
+
 
 /* Media Query */
 
@@ -476,6 +135,11 @@ footer {
         font-size: 25px;
         margin: 20px 80px;
         text-align: center;
+    }
+    .fa-right-from-bracket{
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
     }
 }
 
@@ -946,4 +610,3 @@ footer {
     font-size: 15px;
     text-transform: uppercase;
 }
-

@@ -1,9 +1,16 @@
 import React from 'react';
+import './index.css'
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter} from "react-router-dom"
 import Home from './views/Home/Home';
 import Signup from './views/Signup/Signup';
 import Login from './views/Login/Login';
+import About from './views/About/About';
+import DietPlan from './views/DietPlan/DietPlan';
+import MakeDiet from './views/MakeDiet/MakeDiet';
+import Member from './views/Member/Member';
+import Suplements from './views/Suplements/Suplements';
+import BuyNow from './views/BuyNow/BuyNow';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,6 +27,30 @@ const router = createBrowserRouter([
   {
     path : "/login",
     element : <Login />
+  },
+  {
+    path: "/about",
+    element: <About />
+  },
+  {
+    path: "/dietplan",
+    element: <DietPlan />
+  },
+  {
+    path: "/makediet",
+    element: <MakeDiet />
+  },
+  {
+    path: "/member",
+    element: <Member />
+  },
+  {
+    path: "/supplememts",
+    element: <Suplements />
+  },
+  {
+    path: "/buynow",
+    element: <BuyNow />
   },
 
   {
