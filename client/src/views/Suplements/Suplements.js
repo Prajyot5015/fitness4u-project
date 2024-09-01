@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 function Suplements() {
   const [selectedProduct, setSelectedProduct] = useState("product1");
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(2200);
+  //const [price, setPrice] = useState(2200);
 
   const data = {
     product1: {
@@ -76,7 +76,7 @@ function Suplements() {
   const handleDetails = (productKey) => {
     setSelectedProduct(productKey);
     setQuantity(1); 
-    setPrice(currentProduct.price) 
+    //setPrice(currentProduct.price) 
     
   };
 
@@ -100,13 +100,14 @@ function Suplements() {
     }
   };
 
-  const totalPrice = quantity * price;
+  const totalPrice = quantity * data[selectedProduct].price;
 
   const handleSetValue = () => {
     localStorage.setItem("totalPrice", quantity * parseInt(data[selectedProduct].price));
   };
 
   const currentProduct = data[selectedProduct];
+  
   
 
   return (

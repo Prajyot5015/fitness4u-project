@@ -3,15 +3,9 @@ import axios from "axios"
 import './Member.css';
 import Navbar from '../../componets/Navbar/Navbar'
 import Footer from '../../componets/Footer/Footer'
-// import scannerImg from './scanner.jpg'
-// import pImg from './payment/p.png'
-// import gImg from './payment/g-pay.png'
-// import aImg from './payment/a.png'
-// import paytmImg from './payment/paytm.png'
 import toast from 'react-hot-toast';
 
 function Member() {
-    // const [amount, setAmount] = useState("");
     const [months, setMonths] = useState("Select Months");
     const [paymentMode, setPaymentMode] = useState('');
     const [user, setUser] = useState('')
@@ -22,7 +16,7 @@ function Member() {
     const [number, setNumber] = useState("");
     const [totalAmount, setTotal] = useState(0);
     const [mode, setMode] = useState("");
-    const [file, setFile] = useState("");
+   
 
     const [canProceed, setCanProceed] = useState(false);
 
@@ -73,7 +67,6 @@ function Member() {
             months,
             totalAmount,
             mode,
-            file,
             user: user._id
         })
 
@@ -86,7 +79,6 @@ function Member() {
             setMonths('Select Months')
             // setAmount(0)
             setTotal(0)
-            setFile('')
 
             setTimeout(() => {
                 window.location.href = '/'
@@ -95,15 +87,6 @@ function Member() {
         } else {
             toast.error("Sorry, Email already Exist...");
         }
-
-        // toast.success(response.data.message)              
-
-
-        // setTimeout(() => {
-        //     window.location.href = '/'
-        // }, 2000)
-
-
     }
 
     const handleProceed = () => {

@@ -1,34 +1,41 @@
 import { Schema, model } from "mongoose"
 
-const memberSchema = new Schema({
+const purchaseSchema = new Schema({
     uname: {
-        type: String,
-        required: true
-    },
-    age: {
         type: String,
         required: true
     },
     email: {
         type: String,
         required: true,
-        unique: true
     },
     number: {
         type: String,
         required: true
     },
-    months: {
+    address: {
         type: String,
         required: true
     },
-    totalAmount: {
-        type: Number,
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    pincode: {
+        type: String,
         required: true
     },
     mode: {
         type: String,
-        enum: ["online", "offline"]
+        enum: ["UPI", "cash"]
+    },
+    totalAmount: {
+        type: Number,
+        required: true
     },
     user: {
         type: Schema.Types.ObjectId,
@@ -41,6 +48,6 @@ const memberSchema = new Schema({
 
     });
 
-const Member = model("Member", memberSchema);
+const Purchase = model("Purchase", purchaseSchema);
 
-export default Member;
+export default Purchase;
