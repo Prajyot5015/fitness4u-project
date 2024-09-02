@@ -129,7 +129,7 @@ body {
     }
 
     #check:checked~.navbar {
-        height: 350px;
+        height: 400px;
     }
 
     .navbar a {
