@@ -125,6 +125,28 @@ footer {
     color: red;
     font-size: 20px;
 }
+.call {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 30px;
+    background-color: #f13a11;
+    padding: 13px;
+    border-radius: 50%;
+    animation: fastBlinkEffect 1s infinite;
+}
+@keyframes fastBlinkEffect {
+    0%, 100% {
+        font-size: 30px;
+    }
+    50% {
+        font-size: 20px;
+    }
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
 
 /* End Footer */
 

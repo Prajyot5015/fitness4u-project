@@ -29,6 +29,53 @@ body {
     background: #fff;
     color: #f13a11;
 }
+.btn1 {
+    color: #fff;
+    background: #f13a11;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+.btn1:hover {
+    background: #fff;
+    color: #f13a11;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.blink{
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    animation: blink 1s infinite; 
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; 
+    }
+    50% {
+        opacity: 0; 
+    }
+}
+
 
 .back {
     background-image: url(./bg-home.webp); 
@@ -84,10 +131,20 @@ body {
     color: #fff;
     font-weight: 500;
     padding: 10px 20px;
+    transition: transform 0.3s ease;
+    animation: zoomEffect 0.3s forwards infinite;
 }
 
 .mid .btn-container .simple:hover {
     color: #ff5733;
+}
+@keyframes zoomEffect {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .mid .btn-container .border {
@@ -142,7 +199,10 @@ body {
     border-left: 1px solid#666262;
     padding-left: 65px;
 }
-
+.two .msg{
+    display: flex;
+    align-items: center;
+}
 .details .two h3 {
     font-size: 40px;
 }
@@ -151,7 +211,7 @@ body {
     font-size: 18px;
 }
 
-.details .two p {
+.details .two .text-blur {
     font-size: 18px;
     color: #666262;
     margin-bottom: 12px;
@@ -178,10 +238,38 @@ body {
     color: #7f8c8d;
     font-size: 18px;
 }
-
-.trainer .about .btn {
+.lbtn {
+    color: #fff;
+    background: #f13a11;
     display: block;
     margin: 15px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+.lbtn:hover {
+    background: #fff;
+    color: #f13a11;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 a {

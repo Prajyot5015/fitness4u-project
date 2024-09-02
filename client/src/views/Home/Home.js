@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom'
 
 function Home() {
     const [user, setUser] = useState('')
+    const [day, setDay] = useState('')
+    const [msg, setMsg] = useState('')
 
 
     useEffect(() => {
@@ -25,27 +27,16 @@ function Home() {
         }
     }, [])
 
-    // function day() {
-    //     const dayElement = document.getElementById('day');
-
-    //     const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    //     const d = new Date();
-    //     const day = weekday[d.getDay()];
-
-    //     dayElement.innerText = `${day} : ${day == "Sunday" ? "Closed" : "Opened"}`
-    // }
-    // day();
-
     useEffect(() => {
-        const dayElement = document.getElementById('day');
-
         const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
         const d = new Date();
         const day = weekday[d.getDay()];
 
-        dayElement.innerText = `${day} : ${day == "Sunday" ? "Closed" : "Opened"}`
+        setDay(weekday[d.getDay()])
+        setMsg(day === "Sunday" ? "Closed" : "Opened")
+
+        //  dayElement.innerText = `${day} : <span className="blink">${day == "Sunday" ? "Closed" : "Opened"} </span>`
     }, [])
 
 
@@ -88,14 +79,16 @@ function Home() {
                     <h6>Your membership is up to 2 months FREE (Rs.200 per month)</h6>
                     <p>Our Monthly fee is Rs.500 if you take 2 months admission then fee will be Rs.800
                     </p>
-                    <Link to="/member" className="btn">Become a member today</Link>
+                    <Link to="/member" className="btn1">Become a member today</Link>
                 </div>
                 <div className="two">
                     <h3>Working Hours</h3>
                     <br />
-                    <h5 id="day">h</h5>
-                    <p>Morning : 5:00 AM - 10:00 PM</p>
-                    <p>Evening : 5:00 PM - 10:00 PM</p>
+                    <div className='msg'>
+                        <h5 id="day">{day} : </h5> <p className='blink'> {msg} </p>
+                    </div>
+                    <p className='text-blur'>Morning : 5:00 AM - 10:00 PM</p>
+                    <p className='text-blur'>Evening : 5:00 PM - 10:00 PM</p>
                     <br />
                     <h5>Monday - Saturday</h5>
                     <h5>Sunday : Close</h5>
@@ -113,7 +106,7 @@ function Home() {
                         you're a seasoned athlete or just starting your fitness journey, our expert staff is here to guide and
                         support you every step of the way.
                     </p>
-                    <Link to="/about" > <button type="button" className="btn">Learn more </button> </Link>
+                    <Link to="/about" > <button type="button" className="lbtn">Learn more </button> </Link>
                 </div>
                 <div className="people">
                     <div className="team1" id="team1">
@@ -165,15 +158,15 @@ function Home() {
             <div className="protein-container">
                 <div className="protein-card">
                     <div className="card" id="card">
-                        <img src={membershipImg} alt="image not found " />
+                        <img src={membershipImg} alt="img not found " />
                         <h2><Link to="/member">Get MemberShip</Link></h2>
                     </div>
                     <div className="card card2" id="card2">
-                        <img src={pencilImg} alt="image not found " />
+                        <img src={pencilImg} alt="img not found " />
                         <h2><Link to="/makediet" >Make Your Diet Plan</Link></h2>
                     </div>
                     <div className="card" id="card3">
-                        <img src={scheduleImg} alt="image not found " />
+                        <img src={scheduleImg} alt="img not found " />
                         <h2><Link to="/makediet" > View Your Diet Plan</Link></h2>
                     </div>
                 </div>
@@ -201,10 +194,10 @@ function Home() {
                 </div>
             </div>
 
-         <Footer />
+            <Footer />
 
 
-            
+
         </div >
     </>
     )

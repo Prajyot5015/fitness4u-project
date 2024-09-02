@@ -141,7 +141,7 @@ function About() {
             you're a seasoned athlete or just starting your fitness journey, our expert staff is here to guide and
             support you every step of the way.
           </p>
-          <a href="./pages/about.html"> <button type="button" className="btn">Learn more </button> </a>
+          {/* <a href="./pages/about.html"> <button type="button" className="btn">Learn more </button> </a> */}
         </div>
         <div className="people">
           <div className="team1" id="team1">

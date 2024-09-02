@@ -64,6 +64,7 @@ function Footer() {
                     <p>Made With Love <i className="fas fa-heart"></i> By Fitness<span className="four">4</span>U</p>
                 </div>
             </footer >
+            <a href="tel: 7028112938"><i className="fa-solid fa-phone call"></i></a>
         </div>
     )
 }
