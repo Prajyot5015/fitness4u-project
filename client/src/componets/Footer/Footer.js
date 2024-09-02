@@ -1,10 +1,11 @@
 import React from 'react'
 import './Footer.css'
+import { Link } from "react-router-dom";
 
 function Footer() {
-  return (
-    <div>
-           <footer>
+    return (
+        <div>
+            <footer>
                 <div className="footer-container">
                     <div className="footer-content">
                         <h3>Contact Us</h3>
@@ -13,8 +14,8 @@ function Footer() {
                             <p><a href="mailto:fitness4u@gmail.com">fitness4u@gmail.com</a></p>
                         </div>
                         <div className="contact">
-                            <i className="fas fa-phone-volume"></i><a href="tel:09960014512">
-                                09960014512
+                            <i className="fas fa-phone-volume"></i><a href="tel:7028112938">
+                                7028112938
                             </a>
                         </div>
                         <div className="contact">
@@ -28,11 +29,21 @@ function Footer() {
                     <div className="footer-content">
                         <h3>Quick Links</h3>
                         <ul className="list">
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./pages/about.html">About Us</a></li>
-                            <li><a href="./pages/supplement.html">Supplements</a></li>
-                            <li><a href="./pages/diet.html">Diet Plan</a></li>
-                            <li><a href="./pages/dietForm.html">Your Diet</a></li>
+                            <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/about">About</Link>
+                            </li>
+                            <li>
+                                <Link to="/dietplan">Diet Plan</Link>
+                            </li>
+                            <li>
+                                <Link to="/supplememts">Supplements</Link>
+                            </li>
+                            <li>
+                                <Link to="/member">Join Us</Link>
+                            </li>
 
                         </ul>
                     </div>
@@ -53,8 +64,8 @@ function Footer() {
                     <p>Made With Love <i className="fas fa-heart"></i> By Fitness<span className="four">4</span>U</p>
                 </div>
             </footer >
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Footer
