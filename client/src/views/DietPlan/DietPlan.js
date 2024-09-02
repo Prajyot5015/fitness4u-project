@@ -71,7 +71,7 @@ function DietPlan() {
     }
 
     return (
-        <div>
+      <>
             <Navbar />
 
             <div className="protein-container">
@@ -189,9 +189,9 @@ function DietPlan() {
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
             
-
     <div class="one-day-container">
         <h2>One Day Diet Plan</h2>
         <div class="gain-loss-container">
@@ -265,10 +265,93 @@ function DietPlan() {
             </table>
         </div>
     </div>
+    
+    
+    <div class="meal-plan-container meal-plan-container-light" id="mealPlan">
+        <h2>2400-Calorie Meal Plan For Building Muscle</h2>
+        <p>This Plan includes three balanced meals and two snacks daily,providing the perfect mix of 200 grams of
+            protein,243 grams of carbohydrates, and 70g of dietary fats.</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Macros</th>
+                    <th>Grams</th>
+                    <th>Calories</th>
+                    <th>% of 2400</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Protein</td>
+                    <td>200 g</td>
+                    <td>880</td>
+                    <td>33.3%</td>
+                </tr>
+
+                <tr>
+                    <td>Carbs</td>
+                    <td>243 g</td>
+                    <td>972</td>
+                    <td>40.5%</td>
+                </tr>
+
+                <tr>
+                    <td>Facts</td>
+                    <td>70 g</td>
+                    <td>630</td>
+                    <td>26.3%</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="calories-card">
+            <div class="card calories-card-dark" id="ccard1">
+                <h4>BreakFast</h4>
+                <p>Chia Seed Mango Pudding</p>
+                <ul>
+                    <li>Chia Seeds</li>
+                    <li>Protein Powder</li>
+                    <li>Frozen Mango</li>
+                    <li>Milk</li>
+                    <li>Greek yogurt</li>
+                    <li>Honey</li>
+                </ul>
+            </div>
+            <div class="card calories-card-dark" id="ccard2">
+                <h4>Lunch</h4>
+                <p>Protein Pasta Salad</p>
+                <ul>
+                    <li>Cucumbers</li>
+                    <li>Cherry Tomato</li>
+                    <li>Red Onion</li>
+                    <li>Black Beans</li>
+                    <li>Whole Grain Pasta</li>
+                    <li>Shrimp</li>
+                </ul>
+            </div>
+            <div class="card calories-card-dark" id="ccard3">
+                <h4>Dinner</h4>
+                <p>Lemon Pepper Tilapia</p>
+                <ul>
+                    <li>Tuna salad</li>
+                    <li>Baby carrots</li>
+                    <li>Cucumber</li>
+                    <li>Celery</li>
+                    <li>Wheat crackers</li>
+                </ul>
+            </div>
+            <div class="card calories-card-dark" id="ccard4">
+                <h4>Snack</h4>
+                <p>Almonds and a Hard Boiled Egg</p>
+                <ul>
+                    <li>Almonds</li>
+                    <li>Egg</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
             <Footer />
-        </div>
+      </>
 );
 }
 

@@ -31,37 +31,39 @@ function Login() {
   }
 
   return (
-    <div className="login-container">
-      <h2 >User Login</h2>
+    <div className='login-main-div'>
+      <div className="login-container">
+        <h2 >User Login</h2>
 
-      <form >
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form >
+          <input
+            type='email'
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button
-          type='button'
-          onClick={loginNow}
-        >
-          Login
-        </button>
-      </form>
+          <button
+            type='button'
+            onClick={loginNow}
+          >
+            Login
+          </button>
+        </form>
 
-      <Link to='/signup' >Don't have an account? Signup</Link>
+        <Link to='/signup' >Don't have an account? Signup</Link>
 
-      <Toaster />
+        <Toaster />
+      </div>
     </div>
-  )
+      )
 }
 
-export default Login
+      export default Login

@@ -58,50 +58,52 @@ function Signup() {
     };
 
     return (
-        <div className='signup-container'>
-            <h2>User Registration</h2>
+        <div className='signup-main-div'>
+            <div className='signup-container'>
+                <h2>User Registration</h2>
 
-            <form>
-                <input
-                    type="text"
-                    placeholder="Full Name"
-                    value={user.fullName}
-                    onChange={(e) => setUser({ ...user, fullName: e.target.value })}
-                />
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={user.fullName}
+                        onChange={(e) => setUser({ ...user, fullName: e.target.value })}
+                    />
 
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={user.email}
-                    onChange={(e) => setUser({ ...user, email: e.target.value })}
-                />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={user.email}
+                        onChange={(e) => setUser({ ...user, email: e.target.value })}
+                    />
 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={user.password}
-                    onChange={(e) => setUser({ ...user, password: e.target.value })}
-                />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={user.password}
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                    />
 
-                <input
-                    type="text"
-                    placeholder="Mobile Number"
-                    value={user.number}
-                    onChange={(e) => setUser({ ...user, number: e.target.value })}
-                />
+                    <input
+                        type="text"
+                        placeholder="Mobile Number"
+                        value={user.number}
+                        onChange={(e) => setUser({ ...user, number: e.target.value })}
+                    />
 
-                <button
-                    type='button'
-                    onClick={signup}
-                    className='link-btn'
-                >
-                    Register
-                </button>
-            </form>
+                    <button
+                        type='button'
+                        onClick={signup}
+                        className='link-btn'
+                    >
+                        Register
+                    </button>
+                </form>
 
-            <Link to='/login'>Already have an account? Login</Link>
+                <Link to='/login'>Already have an account? Login</Link>
 
-            <Toaster />
+                <Toaster />
+            </div>
         </div>
     );
 }

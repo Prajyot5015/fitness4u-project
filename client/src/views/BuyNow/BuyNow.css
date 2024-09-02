@@ -48,11 +48,8 @@ textarea {
     padding: 20px;
 }
 
-.form-container{
-    background: #424242;
-}
-
 .form-items {
+    background: #424242;
     max-width: 650px;
     padding: 28px;
     border-radius: 10px;

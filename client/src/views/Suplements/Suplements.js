@@ -75,9 +75,9 @@ function Suplements() {
 
   const handleDetails = (productKey) => {
     setSelectedProduct(productKey);
-    setQuantity(1); 
+    setQuantity(1);
     //setPrice(currentProduct.price) 
-    
+
   };
 
   const handleImageChange = (index) => {
@@ -107,8 +107,8 @@ function Suplements() {
   };
 
   const currentProduct = data[selectedProduct];
-  
-  
+
+
 
   return (
     <>
@@ -118,7 +118,7 @@ function Suplements() {
         <h1>Supplements</h1>
         <div className="all-products">
           <div className="product" id="product1">
-            <img  src={w1Img} alt="supplement " />
+            <img src={w1Img} alt="supplement " />
             <div className="product-info">
               <h4 className="pro-title">Whey Protein Powder</h4>
               <p className="pro-price">₹ 2,200</p>
@@ -127,7 +127,7 @@ function Suplements() {
           </div>
 
           <div className="product" id="product2">
-            <img   src={m1Img} alt="supplement " />
+            <img src={m1Img} alt="supplement " />
             <div className="product-info">
               <h4 className="pro-title">Mass Gainer</h4>
               <p className="pro-price">₹ 1,149</p>
@@ -145,7 +145,7 @@ function Suplements() {
           </div>
 
           <div className="product" id="product4">
-            <img   src={c1Img} alt="supplement " />
+            <img src={c1Img} alt="supplement " />
             <div className="product-info">
               <h4 className="pro-title">Nutrition Power</h4>
               <p className="pro-price">₹ 3499</p>
@@ -162,7 +162,7 @@ function Suplements() {
             <div className="product-imgs">
               <div className="img-display">
                 <div className="img-showcase">
-                  <img  src={currentProduct.img[0]} alt="supplement" id="product-main-image" />
+                  <img src={currentProduct.img[0]} alt="supplement" id="product-main-image" />
                 </div>
               </div>
               <div className="img-select" id="small-imgs">
@@ -179,41 +179,41 @@ function Suplements() {
             </div>
 
             <div className="product-content">
-                <h2 className="product-title" id="product-title"> {currentProduct.name} </h2>
-                <a href="https://maps.app.goo.gl/ZCaLBy9iwxGCiZHYA" target="blank" className="product-link">visit our store</a>
-                <div className="product-rating">
+              <h2 className="product-title" id="product-title"> {currentProduct.name} </h2>
+              <a href="https://maps.app.goo.gl/ZCaLBy9iwxGCiZHYA" target="blank" className="product-link">visit our store</a>
+              <div className="product-rating">
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star-half-alt"></i>
                 <span>4.7</span>
-          </div>
-                
-            <div className="product-detail">
+              </div>
+
+              <div className="product-detail">
                 <h2>about this item: </h2>
                 <p id="desc"> {currentProduct.desc} </p>
                 <ul>
-                <li>Brand: <span id="brand">{currentProduct.brand}</span></li>
-                <li>Flavour: <span id="flavour">{currentProduct.flavour}</span></li>
-                <li>Age Range: <span>Adult</span></li>
-                <li>Product Benefits : <span>Muscle Growth</span></li>
+                  <li>Brand: <span id="brand">{currentProduct.brand}</span></li>
+                  <li>Flavour: <span id="flavour">{currentProduct.flavour}</span></li>
+                  <li>Age Range: <span>Adult</span></li>
+                  <li>Product Benefits : <span>Muscle Growth</span></li>
                 </ul>
-            </div>
+              </div>
 
-            <div className="product-price">
+              <div className="product-price">
                 <p className="last-price">M.R.P.: <span id="mrp">₹{currentProduct.MRP}</span></p>
                 <p className="new-price">Price: <span>₹ <span id="price">{currentProduct.price} </span> </span></p>
                 <p className="new-price">Total: <span id="total-quantity"> {totalPrice}  </span></p>
                 <p className="new-price">Quantity: <span id="quantity-place">{quantity}</span></p>
-            </div>
+              </div>
 
-            <div className="purchase-info">
-                <img alt="img"  src={minusImg} className="quantity-img" onClick={handleDecrement} />
+              <div className="purchase-info">
+                <img alt="img" src={minusImg} className="quantity-img" onClick={handleDecrement} />
                 <span className="quantity-text" id="quantity-text">{quantity}</span>
-                <img alt="img"  src={plusImg} className="quantity-img" onClick={handleIncrement} />
-                <Link to="/buynow"><button type="button" className="btn"  onClick={handleSetValue}>Buy Now</button></Link>
-            </div>
+                <img alt="img" src={plusImg} className="quantity-img" onClick={handleIncrement} />
+                <Link to="/buynow"><button type="button" className="btn" onClick={handleSetValue}>Buy Now</button></Link>
+              </div>
             </div>
           </div>
         </div>
