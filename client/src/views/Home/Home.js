@@ -14,7 +14,6 @@ function Home() {
     const [day, setDay] = useState('')
     const [msg, setMsg] = useState('')
 
-
     useEffect(() => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
