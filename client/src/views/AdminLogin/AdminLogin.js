@@ -64,11 +64,6 @@ function AdminLogin() {
                         Login
                     </button>
                 </form>
-
-                <Link to='/signup' >Don't have an account? Signup</Link>
-
-
-
                 <Toaster />
             </div>
         </div>
