@@ -11,6 +11,8 @@ import MakeDiet from './views/MakeDiet/MakeDiet';
 import Member from './views/Member/Member';
 import Suplements from './views/Suplements/Suplements';
 import BuyNow from './views/BuyNow/BuyNow';
+import AdminLogin from './views/AdminLogin/AdminLogin';
+import Admin from './views/Admin/Admin';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
   {
     path : "/login",
     element : <Login />
+  },
+  {
+    path : "/adminlogin",
+    element : <AdminLogin />
+  },
+  {
+    path : "/admin",
+    element : <Admin />
   },
   {
     path: "/about",

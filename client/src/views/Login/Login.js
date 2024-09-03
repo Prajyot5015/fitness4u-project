@@ -33,7 +33,14 @@ function Login() {
   return (
     <div className='login-main-div'>
       <div className="login-container">
-        <h2 >User Login</h2>
+        <div className='lg'>
+          <div className='user active'>
+            <Link to='/login' className='admin'>User Login</Link>
+          </div>
+          <div className='user'>
+            <Link to="/adminlogin" className='admin'>Admin</Link>
+          </div>
+        </div>
 
         <form >
           <input
@@ -60,10 +67,12 @@ function Login() {
 
         <Link to='/signup' >Don't have an account? Signup</Link>
 
+
+
         <Toaster />
       </div>
     </div>
-      )
+  )
 }
 
-      export default Login
+export default Login

@@ -7,6 +7,7 @@ dotenv.config();
 import { postSignup, postLogin} from "./controllers/user.js";
 import { postMember } from "./controllers/member.js";
 import { postPurchase } from "./controllers/purchase.js";
+import { postAdminLogin, postAdminSignup } from "./controllers/adminlogin.js";
 
 const app = express();
 app.use(express.json());
@@ -32,6 +33,10 @@ app.get("/", (req, res) => {
 app.post("/signup", postSignup)
 
 app.post("/login", postLogin )
+
+app.post("/adminsignup", postAdminSignup )
+
+app.post("/adminlogin", postAdminLogin )
 
 app.post("/member", postMember )
 
