@@ -1,0 +1,37 @@
+.admin-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+.admin-search{
+    width: 50%;
+    border-radius: 4px  0 0 4px;
+}
+.fa-magnifying-glass{
+    background-color: #fff;
+    color: #000;
+    padding: 9px 20px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0 4px 4px 0;
+    outline: none;
+    cursor: pointer;
+}
+.admin-logout{
+    margin-left: 30px;
+}
+.admin-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.admin-btn{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
