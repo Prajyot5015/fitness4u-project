@@ -1,15 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Admin.css'
+import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 
 
 function Admin() {
 
+  const [search, setSearch] = useState('');
+  const [member, setMember] = useState([])
+
+  const searchMember = async () => {
+
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/members?memberName=${search}`)
+
+    const allFindMembers = response.data.data
+
+   // console.log(response.data.data);
+
+    setMember(allFindMembers)
+  }
+  useEffect(() => {
+    searchMember()
+  }, [search])
+
   return (
     <>
       <div className='admin-container'>
-        <input type='text' placeholder='Search' className='admin-search' />
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type='text'
+          list="techOptions"
+          placeholder='Search'
+          className='admin-search'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)} />
+        <i className="fa-solid fa-magnifying-glass"></i>
+
+        <datalist id="techOptions">
+        {
+                    member.map((member) => {
+                        const { _id, uname, email, mode, months, number, totalAmount } = member
+
+                        return (<option  key={_id}> {uname} </option>)
+                    })
+        }
+        </datalist>
 
         <span className='admin-logout' onClick={() => {
           localStorage.clear()

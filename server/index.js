@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 dotenv.config();
 
 import { postSignup, postLogin} from "./controllers/user.js";
-import { postMember } from "./controllers/member.js";
+import { getMember, postMember } from "./controllers/member.js";
 import { postPurchase } from "./controllers/purchase.js";
 import { postAdminLogin, postAdminSignup } from "./controllers/adminlogin.js";
 
@@ -39,6 +39,9 @@ app.post("/adminsignup", postAdminSignup )
 app.post("/adminlogin", postAdminLogin )
 
 app.post("/member", postMember )
+
+app.get("/members", getMember )
+
 
 app.post("/purchase", postPurchase )
 

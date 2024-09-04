@@ -35,3 +35,17 @@
     margin-right: 10px;
     cursor: pointer;
 }
+
+#techOptions {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  #techOptions::-webkit-scrollbar {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  

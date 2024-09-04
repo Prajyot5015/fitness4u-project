@@ -33,4 +33,21 @@ const postMember = async (req, res) => {
     }
 }
 
-export { postMember }
+const getMember = async (req, res) => { 
+
+    const { memberName } = req.query
+
+  
+    const goals = await Member.find({uname : memberName }).sort({ createdAt: -1 })
+
+    res.json({
+        success: true,
+        message: `Member Fetched Successfully`,
+        data: goals
+    })
+}
+
+
+
+
+export { postMember, getMember }
