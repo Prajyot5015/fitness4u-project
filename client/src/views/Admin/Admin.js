@@ -1,28 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import './Admin.css'
-import axios from 'axios'
-import toast, { Toaster } from 'react-hot-toast'
-
+import React, { useState, useEffect } from 'react';
+import './Admin.css';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Admin() {
-
   const [search, setSearch] = useState('');
-  const [member, setMember] = useState([])
+  const [members, setMembers] = useState([]);
+  const [filteredMembers, setFilteredMembers] = useState([]);
 
-  const searchMember = async () => {
+  useEffect(() => { 
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/members`);
+        setMembers(response.data.data);
+        setFilteredMembers(response.data.data);
+      } catch (error) {
+        toast.error('Failed to fetch members.');
+      }
+    };
 
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/members?memberName=${search}`)
+    fetchMembers();
+  }, []);
 
-    const allFindMembers = response.data.data
-
-   // console.log(response.data.data);
-
-    setMember(allFindMembers)
-  }
   useEffect(() => {
-    searchMember()
-  }, [search])
+    const filtered = members.filter(member =>
+      member.uname.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredMembers(filtered);
+  }, [search, members]);
 
+ 
   return (
     <>
       <div className='admin-container'>
@@ -32,18 +39,17 @@ function Admin() {
           placeholder='Search'
           className='admin-search'
           value={search}
-          onChange={(e) => setSearch(e.target.value)} />
+          onChange={ (e) => setSearch(e.target.value)}
+        />
         <i className="fa-solid fa-magnifying-glass"></i>
 
-        <datalist id="techOptions">
-        {
-                    member.map((member) => {
-                        const { _id, uname, email, mode, months, number, totalAmount } = member
 
-                        return (<option  key={_id}> {uname} </option>)
-                    })
-        }
+        <datalist id="techOptions">
+          {filteredMembers.map(member => (
+            <option key={member._id}>{member.uname}</option>
+          ))}
         </datalist>
+
 
         <span className='admin-logout' onClick={() => {
           localStorage.clear()
@@ -62,7 +68,8 @@ function Admin() {
       </div>
       <Toaster />
     </>
-  )
+  );
 }
 
-export default Admin
+export default Admin;
+
