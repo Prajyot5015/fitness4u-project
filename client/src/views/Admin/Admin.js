@@ -1,10 +1,10 @@
 import React from 'react'
 import './Admin.css'
 import MemberTable from '../../componets/MemberTable/MemberTable'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Admin = () => {
   return (
-
     <>
       <header>
         <div class="logosec">
@@ -27,9 +27,18 @@ const Admin = () => {
                 <h3>Sellers</h3>
               </div>
 
-              <div class="nav-option alogout">
+              <div class="nav-option alogout" onClick={() => {
+                  localStorage.clear()
+                  toast.success('Logged out successfully')
+
+                  setTimeout(() => {
+                    window.location.href = '/adminlogin'
+                  }, 3000)
+                }}>
                 <i class="fa-solid fa-right-from-bracket fa-rotate-180 alg"></i>
-                <h3>Logout</h3>
+                <h3>
+                  Logout
+                </h3>
               </div>
 
             </div>
@@ -71,7 +80,7 @@ const Admin = () => {
         </div>
       </div>
 
-
+      <Toaster />
     </>
 
 

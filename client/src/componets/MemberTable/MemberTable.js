@@ -101,7 +101,7 @@ const MemberTable = () => {
         <>
             <div class="report-container">
                 <div class="report-header">
-                    <h1 class="recent-Articles">Recent Articles</h1>
+                    <h1 class="recent-Articles">Recent</h1>
                     <div class="searchbar">
                         <input type="text"
                             value={search}
