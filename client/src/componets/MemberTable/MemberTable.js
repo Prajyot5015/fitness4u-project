@@ -7,6 +7,9 @@ const MemberTable = () => {
     const [members, setMember] = useState([]);
     const [search, setSearch] = useState('')
     const [filterMember, setFilterMember] = useState([])
+    // const [plus, setPlus] = useState(0)
+    // const [minus, setMinus] = useState(0);
+    const [totalMember, setTotalMember] = useState(0)
 
     const getMember = async () => {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/members`);
@@ -65,7 +68,7 @@ const MemberTable = () => {
             member.uname.toLowerCase().includes(search.toLowerCase())
         )
         setFilterMember(result);
-    }, [search,members])
+    }, [search, members])
 
 
     const customStyles = {
@@ -96,13 +99,47 @@ const MemberTable = () => {
         }
     }, 'dark');
 
+    useEffect(()=>{
+        let total = 0
+
+        members.forEach((member) => {
+            total++;
+        })
+        setTotalMember(total)
+    },[members])
+
 
     return (
         <>
-            <div class="report-container">
-                <div class="report-header">
-                    <h1 class="recent-Articles">Recent</h1>
-                    <div class="searchbar">
+            <div className="box-container">
+                <div className="box box1">
+                    <div className="text">
+                        <h2 className="topic-heading">{totalMember}</h2>
+                        <h2 className="topic">Total Members</h2>
+                    </div>
+                    <i className="fa-solid fa-people-group clg"></i>
+                </div>
+
+                <div className="box box2">
+                    <div className="text">
+                        <h2 className="topic-heading">0</h2>
+                        <h2 className="topic">Accepted</h2>
+                    </div>
+                    <i className="fa-solid fa-circle-check clg"></i>
+                </div>
+
+                <div className="box box3">
+                    <div className="text">
+                        <h2 className="topic-heading">0</h2>
+                        <h2 className="topic">Rejected</h2>
+                    </div>
+                    <i className="fa-solid fa-circle-xmark clg"></i>
+                </div>
+            </div>
+            <div className="report-container">
+                <div className="report-header">
+                    <h1 className="recent-Articles">Recent</h1>
+                    <div className="searchbar">
                         <input type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
@@ -111,7 +148,7 @@ const MemberTable = () => {
                     </div>
                 </div>
 
-                <div class="report-body">
+                <div className="report-body">
                     <DataTable
                         columns={columns}
                         data={filterMember}

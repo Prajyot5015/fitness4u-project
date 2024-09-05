@@ -1,84 +1,69 @@
-import React from 'react'
-import './Admin.css'
+import React, { useState, useEffect } from 'react';
+import './Admin.css';
 import MemberTable from '../../componets/MemberTable/MemberTable'
-import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Admin = () => {
-  let menuicn = document.querySelector(".menuicn");
-  let nav = document.querySelector(".navcontainer");
+  const [navClosed, setNavClosed] = useState(false);
 
-  menuicn.addEventListener("click", () => {
-      nav.classList.toggle("navclose");
-  })
+  const toggleNav = () => {
+    setNavClosed(!navClosed);
+  };
+
+  useEffect(() => {
+    const menuicn = document.getElementById('menuicn');
+    if (menuicn) {
+      menuicn.addEventListener('click', toggleNav);
+    }
+
+    return () => {
+      if (menuicn) {
+        menuicn.removeEventListener('click', toggleNav);
+      }
+    };
+  }, [navClosed]);
+
   return (
     <>
       <header>
-        <div class="logosec">
-          <i class="fa-solid fa-bars icn menuicn" id="menuicn"></i>
-          <div class="logo">Fitness<span className='four'>4</span>U</div>
+        <div className="logosec">
+          <i className="fa-solid fa-bars icn menuicn" id="menuicn"></i>
+          <div className="logo">Fitness<span className="four">4</span>U</div>
         </div>
       </header>
 
-      <div class="main-container">
-        <div class="navcontainer">
-          <nav class="nav">
-            <div class="nav-upper-options">
-              <div class="nav-option option1">
-                <i class="fa-solid fa-users alg"></i>
-                <h3> Members</h3>
+      <div className="main-container">
+        <div className={`navcontainer ${navClosed ? 'navclose' : ''}`}>
+          <nav className="nav">
+            <div className="nav-upper-options">
+              <div className="nav-option option1">
+                <i className="fa-solid fa-users alg"></i>
+                <h3>Members</h3>
               </div>
 
-              <div class="option2 nav-option">
-                <i class="fa-solid fa-cart-shopping alg"></i>
+              <div className="option2 nav-option">
+                <i className="fa-solid fa-cart-shopping alg"></i>
                 <h3>Sellers</h3>
               </div>
 
-              <div class="nav-option alogout" onClick={() => {
-                  localStorage.clear()
-                  toast.success('Logged out successfully')
+              <div className="nav-option alogout" onClick={() => {
+                  localStorage.clear();
+                  toast.success('Logged out successfully');
 
                   setTimeout(() => {
-                    window.location.href = '/adminlogin'
-                  }, 3000)
+                    window.location.href = '/adminlogin';
+                  }, 3000);
                 }}>
-                <i class="fa-solid fa-right-from-bracket fa-rotate-180 alg"></i>
-                <h3>
-                  Logout
-                </h3>
+                <i className="fa-solid fa-right-from-bracket fa-rotate-180 alg"></i>
+                <h3>Logout</h3>
               </div>
-
             </div>
           </nav>
         </div>
-        <div class="main">
+        <div className="main">
+         
 
-          <div class="box-container">
-            <div class="box box1">
-              <div class="text">
-                <h2 class="topic-heading">1000</h2>
-                <h2 class="topic">Total Members</h2>
-              </div>
-              <i class="fa-solid fa-people-group clg"></i>
-            </div>
-
-            <div class="box box2">
-              <div class="text">
-                <h2 class="topic-heading">150</h2>
-                <h2 class="topic">Accepted</h2>
-              </div>
-              <i class="fa-solid fa-circle-check clg"></i>
-            </div>
-
-            <div class="box box3">
-              <div class="text">
-                <h2 class="topic-heading">320</h2>
-                <h2 class="topic">Rejected</h2>
-              </div>
-              <i class="fa-solid fa-circle-xmark clg"></i>
-            </div>
-          </div>
-
-          <div class="searchbar2">
+          <div className="searchbar2">
             <input type="text" placeholder="Search" />
           </div>
 
@@ -88,11 +73,7 @@ const Admin = () => {
 
       <Toaster />
     </>
+  );
+};
 
-
-
-    //<MemberTable />
-  )
-}
-
-export default Admin
+export default Admin;

@@ -41,22 +41,9 @@ function Home() {
 
 
     return (<>
-        <div className='main-container'>
-            {/* <h1 className='home-greeting'>Hello {user.fullName}</h1>
-
-            <span className='home-logout' onClick={() => {
-                localStorage.clear()
-                toast.success('Logged out successfully')
-
-                setTimeout(() => {
-                    window.location.href = '/login'
-                }, 3000)
-            }}>
-                Logout
-            </span> */}
+        <div className='Home-main-container'>
 
             <Navbar />
-
 
             <div className="back">
                 <div className="overlay"> </div>
