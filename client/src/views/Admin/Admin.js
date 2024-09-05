@@ -61,12 +61,6 @@ const Admin = () => {
           </nav>
         </div>
         <div className="main">
-         
-
-          <div className="searchbar2">
-            <input type="text" placeholder="Search" />
-          </div>
-
           <MemberTable />
         </div>
       </div>

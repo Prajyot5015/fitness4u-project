@@ -99,14 +99,14 @@ const MemberTable = () => {
         }
     }, 'dark');
 
-    useEffect(()=>{
+    useEffect(() => {
         let total = 0
 
         members.forEach((member) => {
             total++;
         })
         setTotalMember(total)
-    },[members])
+    }, [members])
 
 
     return (
@@ -136,6 +136,14 @@ const MemberTable = () => {
                     <i className="fa-solid fa-circle-xmark clg"></i>
                 </div>
             </div>
+            
+            <div className="searchbar2">
+                <input type="text" placeholder="Search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
+
             <div className="report-container">
                 <div className="report-header">
                     <h1 className="recent-Articles">Recent</h1>
