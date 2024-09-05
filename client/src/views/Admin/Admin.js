@@ -4,6 +4,12 @@ import MemberTable from '../../componets/MemberTable/MemberTable'
 import toast, { Toaster } from 'react-hot-toast'
 
 const Admin = () => {
+  let menuicn = document.querySelector(".menuicn");
+  let nav = document.querySelector(".navcontainer");
+
+  menuicn.addEventListener("click", () => {
+      nav.classList.toggle("navclose");
+  })
   return (
     <>
       <header>

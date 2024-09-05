@@ -113,22 +113,12 @@ const MemberTable = () => {
 
                 <div class="report-body">
                     <DataTable
-                        // title="Member List" 
                         columns={columns}
                         data={filterMember}
                         fixedHeader
-                        fixedHeaderScrollHeight='400px' //for height
+                        fixedHeaderScrollHeight='400px'
                         pagination
                         highlightOnHover
-                        //   actions={ <button className='btn' >Export</button>}
-                        // subHeader
-                        // subHeaderComponent={
-                        //     <input type='text' placeholder='search'
-                        //             value={search} 
-                        //             onChange={(e) => setSearch(e.target.value)} 
-                        //             className='t-search'/>
-                        // }
-                        //  subHeaderAlign='center'
                         customStyles={customStyles}
                         className='sc'
                         theme="solarized"
