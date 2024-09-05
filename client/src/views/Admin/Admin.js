@@ -1,75 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import './Admin.css';
-import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
+import React from 'react'
+import './Admin.css'
+import MemberTable from '../../componets/MemberTable/MemberTable'
 
-function Admin() {
-  const [search, setSearch] = useState('');
-  const [members, setMembers] = useState([]);
-  const [filteredMembers, setFilteredMembers] = useState([]);
-
-  useEffect(() => { 
-    const fetchMembers = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/members`);
-        setMembers(response.data.data);
-        setFilteredMembers(response.data.data);
-      } catch (error) {
-        toast.error('Failed to fetch members.');
-      }
-    };
-
-    fetchMembers();
-  }, []);
-
-  useEffect(() => {
-    const filtered = members.filter(member =>
-      member.uname.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredMembers(filtered);
-  }, [search, members]);
-
- 
+const Admin = () => {
   return (
+
     <>
-      <div className='admin-container'>
-        <input
-          type='text'
-          list="techOptions"
-          placeholder='Search'
-          className='admin-search'
-          value={search}
-          onChange={ (e) => setSearch(e.target.value)}
-        />
-        <i className="fa-solid fa-magnifying-glass"></i>
+      <header>
+        <div class="logosec">
+          <i class="fa-solid fa-bars icn menuicn" id="menuicn"></i>
+          <div class="logo">Fitness<span className='four'>4</span>U</div>
+        </div>
+      </header>
 
+      <div class="main-container">
+        <div class="navcontainer">
+          <nav class="nav">
+            <div class="nav-upper-options">
+              <div class="nav-option option1">
+                <i class="fa-solid fa-users alg"></i>
+                <h3> Members</h3>
+              </div>
 
-        <datalist id="techOptions">
-          {filteredMembers.map(member => (
-            <option key={member._id}>{member.uname}</option>
-          ))}
-        </datalist>
+              <div class="option2 nav-option">
+                <i class="fa-solid fa-cart-shopping alg"></i>
+                <h3>Sellers</h3>
+              </div>
 
+              <div class="nav-option alogout">
+                <i class="fa-solid fa-right-from-bracket fa-rotate-180 alg"></i>
+                <h3>Logout</h3>
+              </div>
 
-        <span className='admin-logout' onClick={() => {
-          localStorage.clear()
-          toast.success('Logged out successfully')
+            </div>
+          </nav>
+        </div>
+        <div class="main">
 
-          setTimeout(() => {
-            window.location.href = '/adminlogin'
-          }, 3000)
-        }}>
-          <i className="fa-solid fa-right-from-bracket"></i>
-        </span>
+          <div class="box-container">
+            <div class="box box1">
+              <div class="text">
+                <h2 class="topic-heading">1000</h2>
+                <h2 class="topic">Total Members</h2>
+              </div>
+              <i class="fa-solid fa-people-group clg"></i>
+            </div>
+
+            <div class="box box2">
+              <div class="text">
+                <h2 class="topic-heading">150</h2>
+                <h2 class="topic">Accepted</h2>
+              </div>
+              <i class="fa-solid fa-circle-check clg"></i>
+            </div>
+
+            <div class="box box3">
+              <div class="text">
+                <h2 class="topic-heading">320</h2>
+                <h2 class="topic">Rejected</h2>
+              </div>
+              <i class="fa-solid fa-circle-xmark clg"></i>
+            </div>
+          </div>
+
+          <div class="searchbar2">
+            <input type="text" placeholder="Search" />
+          </div>
+
+          <MemberTable />
+        </div>
       </div>
-      <div className='admin-btn-container'>
-        <button className='btn admin-btn'>Members</button>
-        <button className='btn admin-btn'>Pusrchase</button>
-      </div>
-      <Toaster />
+
+
     </>
-  );
+
+
+
+    //<MemberTable />
+  )
 }
 
-export default Admin;
-
+export default Admin

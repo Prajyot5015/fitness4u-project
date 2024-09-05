@@ -29,7 +29,7 @@ function Navbar() {
                             window.location.href = '/login'
                         }, 3000)
                     }}>
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                        <i className="fa-solid fa-right-from-bracket hlg"></i>
                     </span>
                 </nav>
                 

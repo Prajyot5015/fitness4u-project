@@ -18,7 +18,7 @@ function AdminLogin() {
         if (response.data.success) {
             toast.success(response.data.message)
 
-            localStorage.setItem('currentUser', JSON.stringify(response.data.data))
+            localStorage.setItem('currentAdmin', JSON.stringify(response.data.data))
 
             toast.loading('Redirecting to dashboard...')
 
