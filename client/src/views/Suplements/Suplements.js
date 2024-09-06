@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
+
 import './Suplements.css';
 import Navbar from '../../componets/Navbar/Navbar';
 import Footer from '../../componets/Footer/Footer';
@@ -88,7 +90,12 @@ function Suplements() {
     if (quantity < 5) {
       setQuantity(quantity + 1);
     } else {
-      alert("You can't buy more than 5 products");
+      swal({
+        title: "You can't buy more than 5 products",
+        text: "Buy less than 5 Products!",
+        icon: "warning",
+        dangerMode: true,
+      });
     }
   };
 
@@ -96,7 +103,12 @@ function Suplements() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     } else {
-      alert("Buy minimum 1 product");
+      swal({
+        title: "You can't buy less than 1 products",
+        text: "Buy more than 1 Product!",
+        icon: "warning",
+        dangerMode: true,
+      });
     }
   };
 

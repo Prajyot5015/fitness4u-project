@@ -111,11 +111,11 @@ function Member() {
         const pattern = /^[6-9]\d{9}$/;
 
         if (!emailRegex.test(email)) {
-            toast.error("Please Enter Valide email address");
+            toast.error("Please Enter Valid email address");
             return;
         }
         if (!pattern.test(mobile)) {
-            toast.error("Please Enter Valide Mobile Number");
+            toast.error("Please Enter Valid Mobile Number");
             return;
         }
 
@@ -123,16 +123,28 @@ function Member() {
         // addMember();   
 
         if (mode === 'offline') {
+            if(totalAmount===0){
+                toast.error("Please, Enter Amount")
+                return
+            }
             addMember();
             // setStatus("Not Yet")
         }
 
         if (mode === 'online') {
             if (canProceed === 'Yes') {
+                if(totalAmount===0){
+                    toast.error("Please, Enter Amount")
+                    return
+                }
                 addMember();
                 // setStatus("Not Yet")
             }
             else {
+                if(totalAmount === 0){
+                    toast.error("Please, Enter Amount")
+                    return
+                }
                 toast.error("Please, Share Your Receipt")
             }
         }
