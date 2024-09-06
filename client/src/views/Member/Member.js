@@ -16,6 +16,8 @@ function Member() {
     const [number, setNumber] = useState("");
     const [totalAmount, setTotal] = useState(0);
     const [mode, setMode] = useState("");
+    const [status, setStatus] = useState("")
+   
 
     const [canProceed, setCanProceed] = useState(false);
 
@@ -66,6 +68,7 @@ function Member() {
             months,
             totalAmount,
             mode,
+            status,
             user: user._id
         })
 
@@ -121,11 +124,13 @@ function Member() {
 
         if (mode === 'offline') {
             addMember();
+            setStatus("Not Yet")
         }
 
         if (mode === 'online') {
             if (canProceed === 'Yes') {
                 addMember();
+                setStatus("Not Yet")
             }
             else {
                 toast.error("Please, Share Your Receipt")

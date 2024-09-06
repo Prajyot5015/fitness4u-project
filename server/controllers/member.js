@@ -1,7 +1,7 @@
 import Member from "../models/Member.js";
 
 const postMember = async (req, res) => {
-    const { uname, age, email, number, months, totalAmount, mode, user } = req.body;
+    const { uname, age, email, number, months, totalAmount, mode,status, user } = req.body;
 
     const member = new Member({      
         uname,
@@ -11,6 +11,7 @@ const postMember = async (req, res) => {
         months,
         totalAmount,
         mode,
+        status,
         user
     })
    
@@ -27,7 +28,8 @@ const postMember = async (req, res) => {
     catch (e) {
         res.json({
             success: false,
-            message: "Sorry,This Email is already exists",
+            // message: "Sorry,This Email is already exists",
+            message :  e.message,
             data: null
         })
     }
@@ -70,5 +72,44 @@ const getMember = async (req, res) => {
 }
 
 
+const putMember = async (req, res) => {
 
-export { postMember, getMember }
+    const {        
+        uname,
+        age,
+        email,
+        number,
+        months,
+        totalAmount,
+        mode,
+        status,
+        user } = req.body;
+
+    const { id } = req.params
+
+    await Member.updateOne({ _id: id },
+        {
+            $set: {
+                uname: uname,
+                age: age,
+                email: email,
+                number: number,
+                months: months,
+                totalAmount: totalAmount,
+                mode : mode,
+                status : status,
+                user : user
+            }
+        })
+
+        const updatedMember = await Member.findById(id)
+
+        res.json({
+            success : true,
+            message : "Member Updated Successfully",
+            data : updatedMember
+        })
+}
+
+
+export { postMember, getMember, putMember }

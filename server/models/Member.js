@@ -30,6 +30,9 @@ const memberSchema = new Schema({
         type: String,
         enum: ["online", "offline"]
     },
+    status: {
+        type: String,
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
