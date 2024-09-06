@@ -72,7 +72,7 @@ function DietPlan() {
 
     return (
       <>
-            <Navbar />
+            <Navbar active="diet" />
 
             <div className="protein-container">
                 <h1>How Much Protein Do You Need TO Build Muscle?</h1>

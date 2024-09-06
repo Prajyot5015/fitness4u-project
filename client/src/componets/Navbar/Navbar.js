@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { Link } from "react-router-dom";
 import './../../views/Home/Home.css'
 
-function Navbar() {
+function Navbar({active}) {
 
     return (
         <div>
@@ -16,10 +16,10 @@ function Navbar() {
                     <i className="fa-solid fa-xmark" id="close-icon"></i>
                 </label>
                 <nav className="navbar" id="navbar">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/dietplan">Diet Plan</Link>
-                    <Link to="/supplememts">Supplements</Link>
+                    <Link to="/" className={ active=== "home" ? "activebg" : ""}>Home</Link>
+                    <Link to="/about" className={ active=== "about" ? "activebg" : ""}>About</Link>
+                    <Link to="/dietplan" className={ active=== "diet" ? "activebg" : ""}>Diet Plan</Link>
+                    <Link to="/supplememts" className={ active=== "supplement" ? "activebg" : ""}>Supplements</Link>
                     <Link to="/member" className='blink'>Join Us</Link>
                     <span className='home-logout' onClick={() => {
                         localStorage.clear()

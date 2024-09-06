@@ -70,7 +70,7 @@
     margin-top: 20px;
 }
 
-.imgs img,video {
+.imgs img, .videoa {
     object-fit: cover;
     width: 300px;
     height: 300px;

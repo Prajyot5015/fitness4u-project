@@ -112,7 +112,7 @@ function Suplements() {
 
   return (
     <>
-      <Navbar />
+      <Navbar active="supplement"/>
 
       <div className="products">
         <h1>Supplements</h1>

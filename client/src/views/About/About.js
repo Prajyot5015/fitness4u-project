@@ -120,7 +120,7 @@ function About() {
 
     for (let i = 0; i < vids.length; i++) {
       imgElement.innerHTML += `<div class="imgs">
-            <video height="300px" width="300px" controls autoplay muted>
+            <video height="300px" width="300px" controls autoplay mutedcclassName='videoa'>
               <source src="${vids[i]}" type="video/mp4" />
             </video>
           </div>`;
@@ -129,7 +129,7 @@ function About() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar active="about" />
       <div className="trainer">
         <div className="about">
           <h2>Hello, We are Fitness<span className="four">4</span>U</h2>

@@ -8,6 +8,7 @@ import membershipImg from './membership.png'
 import pencilImg from './pencil.png'
 import scheduleImg from './schedule.png'
 import { Link } from 'react-router-dom'
+import bgVideo from './bg.mp4'
 
 function Home() {
     const [user, setUser] = useState('')
@@ -39,20 +40,19 @@ function Home() {
     }, [])
 
 
-
     return (<>
-        <div className='Home-main-container'>
-
-            <Navbar />
-
-            <div className="back">
-                <div className="overlay"> </div>
+        <div className='Home-main-container'>     
+           <Navbar active="home"/>
+            <div className="banner">
+                <video autoPlay loop muted playsInline>
+                    <source src={bgVideo} type="video/mp4" />
+                </video>
             </div>
 
             <div className="mid">
                 <h1 className='home-greeting'>Hello {user.fullName}</h1>
                 <p>New way to build a healthy lifestyle</p>
-                <h2>UPGRADE YOUR BODY AT FITNESS<span className="four">4</span>U</h2>
+                <h2>UPGRADE YOUR BODY AT FITNESS<span className="four slideright">4</span>U</h2>
                 <div className="btn-container">
                     <Link to="/member" className="simple">Get Started</Link>
                     <Link to="/about" className="border">Learn more</Link>
@@ -60,6 +60,7 @@ function Home() {
             </div>
 
             <div className="details">
+             
                 <div className="one">
                     <h3>New to the Fitness<span className="four">4</span>U?</h3>
                     <h6>Your membership is up to 2 months FREE (Rs.200 per month)</h6>

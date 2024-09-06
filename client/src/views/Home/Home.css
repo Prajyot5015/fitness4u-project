@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #171819;
+    background-color: #171a26;
     color: #fff;
 }
 
@@ -29,6 +29,7 @@ body {
     background: #fff;
     color: #f13a11;
 }
+
 .btn1 {
     color: #fff;
     background: #f13a11;
@@ -53,44 +54,90 @@ body {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
 }
-.blink{
+
+.blink {
     padding-left: 10px;
     font-weight: bold;
     font-size: 20px;
-    animation: blink 1s infinite; 
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
-    0%, 100% {
-        opacity: 1; 
+
+    0%,
+    100% {
+        opacity: 1;
     }
+
     50% {
-        opacity: 0; 
+        opacity: 0;
     }
 }
 
-
-.back {
-    background-image: url(./bg-home.webp); 
+.banner {
     width: 100%;
     height: 100vh;
-    z-index: -1;
-    background-size: cover;
+    background-image: linear-gradient(rgba(23, 26, 38, 0.40), rgba(23, 26, 38, 0.40));
     background-position: center;
+    background-size: center;
+    margin-top: 0;
+    padding-top: 0;
 }
 
-.back .overlay {
-    background: #171819;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.5;
+/* .navbar1{
+    width: 90%;
+    padding: 30px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar1 ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.navbar1 ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    padding: 15px;
+}
+.navbar1 li a:hover{
+    background: white;
+    color: #000;
+    transition: 0.6s;
+} */
+
+.banner video {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    z-index: -1;
+}
+
+@media(min-aspect-ratio: 16/9) {
+    .banner video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media(max-aspect-ratio: 16/9) {
+    .banner video {
+        width: auto;
+        height: 100%;
+    }
 }
 
 .mid {
@@ -105,13 +152,107 @@ body {
     color: #7f8c8d;
     font-size: 20px;
     margin-bottom: 10px;
+    animation: zoomIn 2s ease forwards;
+    animation-delay: 0.7s;
+}
 
+
+@keyframes zoomIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+.mid h1 {
+    animation: slideLeft 2s ease forwards;
+    animation-delay: 0.7s;
 }
 
 .mid h2 {
     color: #fff;
-    font-size: 50px;
+    font-size: 35px;
+    animation: slideRight 2s ease forwards;
+    animation-delay: 0.7s;
+    /* animation: slideRight 1s ease forwards; */
 }
+
+.slideright {
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+/* Keyframes */
+
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* End */
+
 
 .four {
     color: #f13a11;
@@ -119,6 +260,8 @@ body {
 
 .mid .btn-container {
     margin-top: 25px;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 0.7s;
 }
 
 .mid .btn-container a {
@@ -138,10 +281,14 @@ body {
 .mid .btn-container .simple:hover {
     color: #ff5733;
 }
+
 @keyframes zoomEffect {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -199,10 +346,12 @@ body {
     border-left: 1px solid#666262;
     padding-left: 65px;
 }
-.two .msg{
+
+.two .msg {
     display: flex;
     align-items: center;
 }
+
 .details .two h3 {
     font-size: 40px;
 }
@@ -238,6 +387,7 @@ body {
     color: #7f8c8d;
     font-size: 18px;
 }
+
 .lbtn {
     color: #fff;
     background: #f13a11;
@@ -264,9 +414,11 @@ body {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
@@ -360,20 +512,24 @@ a {
     padding-top: 20px;
     text-transform: uppercase;
 }
-.protein-card .card a{
+
+.protein-card .card a {
     text-decoration: none;
     color: #fff;
-  
+
 }
-.protein-card .card a:hover{
+
+.protein-card .card a:hover {
     color: #f13a11;
 }
-.protein-card .card img{
+
+.protein-card .card img {
     display: block;
     margin: 0 auto;
     margin-top: 30px;
     width: 70px;
 }
+
 .heading-process {
     text-align: center;
     padding: 20px;
@@ -438,10 +594,12 @@ footer {
     margin: auto;
     padding: 7px;
 }
-.contact{
+
+.contact {
     display: flex;
     align-items: center;
 }
+
 .contact i {
     padding-right: 10px;
 }
@@ -485,9 +643,11 @@ footer {
     align-items: center;
     margin-top: 20px;
 }
-.social-media ul li{
+
+.social-media ul li {
     list-style: none;
 }
+
 .social-media ul li a {
     font-size: 15px;
     padding: 8px;
@@ -1034,4 +1194,3 @@ footer {
     font-size: 15px;
     text-transform: uppercase;
 }
-
