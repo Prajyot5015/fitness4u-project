@@ -35,8 +35,6 @@ function Home() {
 
         setDay(weekday[d.getDay()])
         setMsg(day === "Sunday" ? "Closed" : "Opened")
-
-        //  dayElement.innerText = `${day} : <span className="blink">${day == "Sunday" ? "Closed" : "Opened"} </span>`
     }, [])
 
 

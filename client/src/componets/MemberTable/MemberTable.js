@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import DataTable, { createTheme } from 'react-data-table-component';
 import './MemberTable.css'
+import toast, { Toaster } from 'react-hot-toast'
 
 const MemberTable = () => {
     const [members, setMember] = useState([]);
     const [search, setSearch] = useState('')
     const [filterMember, setFilterMember] = useState([])
-    // const [plus, setPlus] = useState(0)
-    // const [minus, setMinus] = useState(0);
+    const [plus, setPlus] = useState(0)
+    const [minus, setMinus] = useState(0);
     const [totalMember, setTotalMember] = useState(0)
 
     const getMember = async () => {
@@ -16,6 +17,8 @@ const MemberTable = () => {
 
         setMember(response.data.data)
         setFilterMember(response.data.data)
+        // console.log(response.data.data);
+        
     }
 
     const columns = [
@@ -52,10 +55,14 @@ const MemberTable = () => {
             name: "Action",
             cell: (row) => (
                 <>
-                    <i className="fa-solid fa-circle-check w" style={{ color: "#008000", }} ></i>
-                    <i className="fa-solid fa-circle-xmark w" style={{ color: "#Ff0000", }}></i>
+                    <i className="fa-solid fa-circle-check w" onClick={() => updateMember(row._id, "Accept")}  style={{ color: "#008000", }} ></i>
+                    <i className="fa-solid fa-circle-xmark w" onClick={() => updateMember(row._id, "Reject")}  style={{ color: "#Ff0000", }}></i>
                 </>
             )
+        },
+        {
+            name: "Status",
+            selector: (row) => row.status
         }
     ]
 
@@ -101,13 +108,37 @@ const MemberTable = () => {
 
     useEffect(() => {
         let total = 0
-
+        let acceptedMembers = 0
+        let rejectedMembers = 0
+        
         members.forEach((member) => {
             total++;
+            if(member.status === 'Accepted'){
+                acceptedMembers++
+            }
+            if(member.status === 'Rejected'){
+                rejectedMembers++
+            }
         })
         setTotalMember(total)
+        setPlus(acceptedMembers)
+        setMinus(rejectedMembers)
     }, [members])
 
+    const updateMember = async (id, msg) => {
+            await axios.put(`${process.env.REACT_APP_API_URL}/member/${id}`, {
+            status: msg === "Accept" ? 'Accepted' : 'Rejected'
+        });
+   
+        toast.success(`Member ${msg}`);
+
+        const updatedMembers = members.map(member => 
+            member._id === id ? { ...member, status: msg === "Accept" ? 'Accepted' : 'Rejected' } : member
+        );
+        setMember(updatedMembers);
+        setFilterMember(updatedMembers);
+    }
+   
 
     return (
         <>
@@ -122,7 +153,7 @@ const MemberTable = () => {
 
                 <div className="box box2">
                     <div className="text">
-                        <h2 className="topic-heading">0</h2>
+                        <h2 className="topic-heading"> {plus} </h2>
                         <h2 className="topic">Accepted</h2>
                     </div>
                     <i className="fa-solid fa-circle-check clg"></i>
@@ -130,7 +161,7 @@ const MemberTable = () => {
 
                 <div className="box box3">
                     <div className="text">
-                        <h2 className="topic-heading">0</h2>
+                        <h2 className="topic-heading"> {minus} </h2>
                         <h2 className="topic">Rejected</h2>
                     </div>
                     <i className="fa-solid fa-circle-xmark clg"></i>
@@ -170,7 +201,7 @@ const MemberTable = () => {
                     />
                 </div>
             </div>
-
+        <Toaster />
         </>
 
     )

@@ -1,9 +1,9 @@
 import Member from "../models/Member.js";
 
 const postMember = async (req, res) => {
-    const { uname, age, email, number, months, totalAmount, mode,status, user } = req.body;
+    const { uname, age, email, number, months, totalAmount, mode, status, user } = req.body;
 
-    const member = new Member({      
+    const member = new Member({
         uname,
         age,
         email,
@@ -14,7 +14,7 @@ const postMember = async (req, res) => {
         status,
         user
     })
-   
+
 
     try {
         const savedMember = await member.save();
@@ -29,7 +29,7 @@ const postMember = async (req, res) => {
         res.json({
             success: false,
             // message: "Sorry,This Email is already exists",
-            message :  e.message,
+            message: e.message,
             data: null
         })
     }
@@ -39,7 +39,7 @@ const postMember = async (req, res) => {
 
 //     const { memberName } = req.query
 
-  
+
 //     const goals = await Member.find({uname : memberName }).sort({ createdAt: -1 })
 
 //     res.json({
@@ -72,43 +72,66 @@ const getMember = async (req, res) => {
 }
 
 
+// const putMember = async (req, res) => {
+
+//     const {        
+//         uname,
+//         age,
+//         email,
+//         number,
+//         months,
+//         totalAmount,
+//         mode,
+//         status,
+//         user } = req.body;
+
+//     const { id } = req.params
+
+//     await Member.updateOne({ _id: id },
+//         {
+//             $set: {
+//                 uname: uname,
+//                 age: age,
+//                 email: email,
+//                 number: number,
+//                 months: months,
+//                 totalAmount: totalAmount,
+//                 mode : mode,
+//                 status : status,
+//                 user : user
+//             }
+//         })
+
+//         const updatedMember = await Member.findById(id)
+
+//         res.json({
+//             success : true,
+//             message : "Member Updated Successfully",
+//             data : updatedMember
+//         })
+// }
+
+
 const putMember = async (req, res) => {
 
-    const {        
-        uname,
-        age,
-        email,
-        number,
-        months,
-        totalAmount,
-        mode,
-        status,
-        user } = req.body;
+    const { status } = req.body;
 
     const { id } = req.params
 
     await Member.updateOne({ _id: id },
         {
             $set: {
-                uname: uname,
-                age: age,
-                email: email,
-                number: number,
-                months: months,
-                totalAmount: totalAmount,
-                mode : mode,
-                status : status,
-                user : user
+                status: status
             }
         })
 
-        const updatedMember = await Member.findById(id)
+    const updatedMember = await Member.findById(id)
 
-        res.json({
-            success : true,
-            message : "Member Updated Successfully",
-            data : updatedMember
-        })
+    res.json({
+        success: true,
+        message: "Member Updated Successfully",
+        data: updatedMember
+    })
 }
 
 

@@ -20,7 +20,7 @@ function Navbar({active}) {
                     <Link to="/about" className={ active=== "about" ? "activebg" : ""}>About</Link>
                     <Link to="/dietplan" className={ active=== "diet" ? "activebg" : ""}>Diet Plan</Link>
                     <Link to="/supplememts" className={ active=== "supplement" ? "activebg" : ""}>Supplements</Link>
-                    <Link to="/member" className='blink'>Join Us</Link>
+                    <Link to="/member" className='blinkn'>Join Us</Link>
                     <span className='home-logout' onClick={() => {
                         localStorage.clear()
                         toast.success('Logged out successfully')
