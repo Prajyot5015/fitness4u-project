@@ -73,7 +73,8 @@ const MemberTable = () => {
 
     useEffect(() => {
         const result = members.filter(member =>
-            member.uname.toLowerCase().includes(search.toLowerCase())
+            member.uname.toLowerCase().includes(search.toLowerCase()) ||
+            member.status.toLowerCase().includes(search.toLowerCase())
         )
         setFilterMember(result);
     }, [search, members])

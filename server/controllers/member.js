@@ -113,6 +113,18 @@ const getMember = async (req, res) => {
 // }
 
 
+const getMemberId = async (req, res) => {
+    const { id } = req.params
+
+    const member = await Member.findOne({ user : id})
+
+    res.json({
+        success: member ? true : false,
+        data: member || null,
+        message: member ? "member Fetched Successfully" : "member Not found"
+    })
+}
+
 const putMember = async (req, res) => {
 
     const { status, reason } = req.body;
@@ -137,4 +149,4 @@ const putMember = async (req, res) => {
 }
 
 
-export { postMember, getMember, putMember }
+export { postMember, getMember, putMember, getMemberId }
