@@ -134,14 +134,19 @@ const MemberTable = () => {
                 rejectionReason = await swal({
                     text: 'Please provide a reason for rejection.',
                     content: 'input',
+                    dangerMode: true,
                     button: {
                       text: 'Submit',
-                      closeModal: true,
+                      closeModal: true,                      
                     },
                   });
 
                   if (!rejectionReason) {
-                    return swal('Error', 'You need to provide a reason for rejection.', 'error');
+                    return swal('Error', 'You need to provide a reason for rejection.', 'error',
+                        {
+                            dangerMode: true
+                        }
+                    );
                   }
             }
 

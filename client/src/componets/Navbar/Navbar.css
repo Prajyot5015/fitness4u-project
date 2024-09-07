@@ -97,7 +97,9 @@ body {
         transform: rotate(25deg);
     }
 }
-
+.red{
+    color: red;
+}
 .darkLight {
     width: 70px;
     padding-right: 30px;

@@ -24,10 +24,10 @@ function Navbar({ active }) {
                 text: "Now, You are our Member!",
                 icon: "success",
                 dangerMode: true
-            }).then(()=>{
-                setNotification('notification')
+            }).then(() => {
+                setNotification('notification red')
             });
-           
+
         }
         else if (msg.status === 'Rejected') {
             swal({
@@ -35,15 +35,24 @@ function Navbar({ active }) {
                 text: msg.reason,
                 icon: "error",
                 dangerMode: true
-            }).then(()=>{
-                setNotification('notification')
+            }).then(() => {
+                setNotification('notification red')
             });
+        }
+        else if (msg.status === 'Not Yet') {
+            setNotification('notification')
         }
     }
 
     useEffect(() => {
         getMember();
     }, [])
+
+    useEffect(() => {
+        if (msg.status === 'Accepted' || msg.status === 'Rejected') {
+            setNotification('notificationAnimation');
+        }
+    }, [msg]);
 
     return (
         <div>
