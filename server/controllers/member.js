@@ -1,7 +1,7 @@
 import Member from "../models/Member.js";
 
 const postMember = async (req, res) => {
-    const { uname, age, email, number, months, totalAmount, mode, status, user } = req.body;
+    const { uname, age, email, number, months, totalAmount, mode, status, reason, user } = req.body;
 
     const member = new Member({
         uname,
@@ -12,6 +12,7 @@ const postMember = async (req, res) => {
         totalAmount,
         mode,
         status,
+        reason,
         user
     })
 
@@ -114,14 +115,15 @@ const getMember = async (req, res) => {
 
 const putMember = async (req, res) => {
 
-    const { status } = req.body;
+    const { status, reason } = req.body;
 
     const { id } = req.params
 
     await Member.updateOne({ _id: id },
         {
             $set: {
-                status: status
+                status: status,
+                reason: reason
             }
         })
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 import React, { useEffect, useState } from 'react'
 import DataTable, { createTheme } from 'react-data-table-component';
 import './MemberTable.css'
@@ -126,8 +127,27 @@ const MemberTable = () => {
     }, [members])
 
     const updateMember = async (id, msg) => {
+               
+            let  rejectionReason  = ''
+            if(msg === 'Reject'){
+                rejectionReason = await swal({
+                    text: 'Please provide a reason for rejection.',
+                    content: 'input',
+                    button: {
+                      text: 'Submit',
+                      closeModal: true,
+                    },
+                  });
+
+                  if (!rejectionReason) {
+                    return swal('Error', 'You need to provide a reason for rejection.', 'error');
+                  }
+            }
+
+
             await axios.put(`${process.env.REACT_APP_API_URL}/member/${id}`, {
-            status: msg === "Accept" ? 'Accepted' : 'Rejected'
+            status: msg === "Accept" ? 'Accepted' : 'Rejected',
+            reason: msg === "Accept" ? 'Accepted' : rejectionReason
         });
    
         toast.success(`Member ${msg}`);

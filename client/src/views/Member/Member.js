@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
+import swal from 'sweetalert';
+
 import './Member.css';
 import Navbar from '../../componets/Navbar/Navbar'
 import Footer from '../../componets/Footer/Footer'
@@ -73,21 +75,32 @@ function Member() {
         })
 
         if (response.data.success) {
-            toast.success(response.data.message);
-            setUname("")
-            setAge('')
-            setEmail('')
-            setNumber('')
-            setMonths('Select Months')
-            // setAmount(0)
-            setTotal(0)
-
-            setTimeout(() => {
-                window.location.href = '/'
-            }, 2000)
+            // toast.success(response.data.message);
+            swal({
+                title: "Thank You!",
+                text: "Trainer will response you as soon as posiible!",
+                icon: "success",
+                // button: "ok",
+              })
+            .then(()=>  {
+                setUname("")
+                setAge('')
+                setEmail('')
+                setNumber('')
+                setMonths('Select Months')
+                // setAmount(0)
+                setTotal(0)
+    
+                setTimeout(() => {
+                    window.location.href = '/'
+                }, 1000)
+            });        
 
         } else {
-            toast.error("Sorry, Email already Exist...");
+            // toast.error("Sorry, Email already Exist...");
+            swal("Sorry, Email already Exist...",{
+                dangerMode : true
+            });
         }
     }
 
@@ -100,7 +113,7 @@ function Member() {
 
 
 
-        if (!name || !age || !email || !mobile || months === "Select Months") {
+        if (!name || !age || !email || !mobile || months === "Select Months" || !mode) {
             toast.error("Please Enter all deatils")
             return
         }

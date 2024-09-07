@@ -33,6 +33,9 @@ const memberSchema = new Schema({
     status: {
         type: String,
     },
+    reason: {
+        type: String,
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
