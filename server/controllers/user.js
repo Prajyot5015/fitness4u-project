@@ -30,27 +30,35 @@ const postSignup = async (req, res) => {
 }
 
 const postLogin = async (req, res) => {
-    const { email, password } = req.body;
+    try {
+        const { email, password } = req.body;
 
-    const user = await User.findOne({
-        email: email,
-        password: password
-    });
-
-    if (user) {
-        return res.json({
-            success: true,
-            message: "Login Successfully",
-            data: user
-        })
-    }
-    else {
+       
+        const user = await User.findOne({ email });
+    
+        if (user && await user.comparePassword(password)) {
+            return res.json({
+                success: true,
+                message: "Login Successfully",
+                data: user
+            });
+        } else {
+            return res.json({
+                success: false,
+                message: "Invalid credentials",
+                data: null
+            });
+        }
+    } catch (error) {
+        console.error("Login error:", error);
         return res.json({
             success: false,
-            message: "Invalid credentials",
+            message: "Server error",
             data: null
-        })
+        });
     }
-}
+};
+
+
 
 export { postSignup, postLogin }

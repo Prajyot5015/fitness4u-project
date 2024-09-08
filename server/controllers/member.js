@@ -36,20 +36,6 @@ const postMember = async (req, res) => {
     }
 }
 
-// const getMember = async (req, res) => { 
-
-//     const { memberName } = req.query
-
-
-//     const goals = await Member.find({uname : memberName }).sort({ createdAt: -1 })
-
-//     res.json({
-//         success: true,
-//         message: `Member Fetched Successfully`,
-//         data: goals
-//     })
-// }
-
 
 const getMember = async (req, res) => {
     try {
@@ -72,47 +58,6 @@ const getMember = async (req, res) => {
         });
     }
 }
-
-
-// const putMember = async (req, res) => {
-
-//     const {        
-//         uname,
-//         age,
-//         email,
-//         number,
-//         months,
-//         totalAmount,
-//         mode,
-//         status,
-//         user } = req.body;
-
-//     const { id } = req.params
-
-//     await Member.updateOne({ _id: id },
-//         {
-//             $set: {
-//                 uname: uname,
-//                 age: age,
-//                 email: email,
-//                 number: number,
-//                 months: months,
-//                 totalAmount: totalAmount,
-//                 mode : mode,
-//                 status : status,
-//                 user : user
-//             }
-//         })
-
-//         const updatedMember = await Member.findById(id)
-
-//         res.json({
-//             success : true,
-//             message : "Member Updated Successfully",
-//             data : updatedMember
-//         })
-// }
-
 
 const getMemberId = async (req, res) => {
     const { id } = req.params

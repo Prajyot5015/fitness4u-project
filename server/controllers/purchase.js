@@ -33,8 +33,7 @@ const postPurchase = async (req, res) => {
     catch (e) {
         res.json({
             success: false,
-            // message: "Sorry, Order not Placed",
-            message: e.message,
+            message: "Sorry, Order not Placed",
             data: null
         })
     }

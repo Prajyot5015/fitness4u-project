@@ -12,41 +12,41 @@ function Navbar({ active }) {
 
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
-    const getMember = async () => {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/member/${currentUser._id}`);
-        // console.log(response.data.data.reason);
-        // const msg = response.data.data        
-        setMsg(response.data.data)
+    // const getMember = async () => {
+    //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/member/${currentUser._id}`);
+    //     // console.log(response.data.data.reason);
+    //     // const msg = response.data.data        
+    //     setMsg(response.data.data)
 
-        if (msg.status === 'Accepted') {
-            swal({
-                title: "Congratulation!",
-                text: "Now, You are our Member!",
-                icon: "success",
-                dangerMode: true
-            }).then(() => {
-                setNotification('notification red')
-            });
+    //     if (msg.status === 'Accepted') {
+    //         swal({
+    //             title: "Congratulation!",
+    //             text: "Now, You are our Member!",
+    //             icon: "success",
+    //             dangerMode: true
+    //         }).then(() => {
+    //             setNotification('notification red')
+    //         });
 
-        }
-        else if (msg.status === 'Rejected') {
-            swal({
-                title: "Sorry!",
-                text: msg.reason,
-                icon: "error",
-                dangerMode: true
-            }).then(() => {
-                setNotification('notification red')
-            });
-        }
-        else if (msg.status === 'Not Yet') {
-            setNotification('notification')
-        }
-    }
+    //     }
+    //     else if (msg.status === 'Rejected') {
+    //         swal({
+    //             title: "Sorry!",
+    //             text: msg.reason,
+    //             icon: "error",
+    //             dangerMode: true
+    //         }).then(() => {
+    //             setNotification('notification red')
+    //         });
+    //     }
+    //     else if (msg.status === 'Not Yet') {
+    //         setNotification('notification')
+    //     }
+    // }
 
-    useEffect(() => {
-        getMember();
-    }, [])
+    // useEffect(() => {
+    //     getMember();
+    // }, [])
 
     useEffect(() => {
         if (msg.status === 'Accepted' || msg.status === 'Rejected') {
@@ -81,7 +81,8 @@ function Navbar({ active }) {
                     </span>
                 </nav>
 
-                <i className={`fa-solid fa-bell ${notification}`} onClick={getMember}></i>
+                {/* <i className={`fa-solid fa-bell ${notification}`} onClick={getMember}></i> */}
+                <i className={`fa-solid fa-bell ${notification}`} ></i>
 
             </header>
 

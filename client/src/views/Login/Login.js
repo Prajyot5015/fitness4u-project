@@ -14,7 +14,6 @@ function Login() {
       password: password
     })
 
-
     if (response.data.success) {
       toast.success(response.data.message)
 
@@ -28,6 +27,11 @@ function Login() {
     } else {
       toast.error(response.data.message)
     }
+  }
+
+  const clear = ()=>{
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -57,12 +61,22 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+          <div className='login-btn-container'>
           <button
-            type='button'
-            onClick={loginNow}
-          >
-            Login
-          </button>
+              type='button'
+              onClick={loginNow}
+            >
+              Login
+            </button>
+
+            <button
+              type='reset'
+              onClick={clear}
+              className='link-btn'
+            >
+              Cancle
+            </button>
+          </div>
         </form>
 
         <Link to='/signup' >Don't have an account? Signup</Link>

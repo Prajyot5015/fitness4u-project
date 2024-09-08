@@ -30,6 +30,11 @@ function AdminLogin() {
         }
     }
 
+    const clear = ()=>{
+        setEmail('')
+        setPassword('')
+    }
+
     return (
         <div className='login-main-div'>
             <div className="login-container">
@@ -57,12 +62,21 @@ function AdminLogin() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <button
-                        type='button'
-                        onClick={loginNow}
-                    >
-                        Login
-                    </button>
+                    <div className='signup-btn-container'>
+                        <button
+                            type='button'
+                            onClick={loginNow}
+                        >
+                            Login
+                        </button>
+                        <button
+                            type='reset'
+                            onClick={clear}
+                            className='link-btn'
+                        >
+                            Cancle
+                        </button>
+                    </div>
                 </form>
                 <Toaster />
             </div>

@@ -49,6 +49,10 @@ function Signup() {
                     password: '',
                     number: ''
                 });
+
+                setTimeout(() => {
+                    window.location.href = '/login'
+                }, 1000)
             } else {
                 toast.error("Sorry, Email already Exist...");
             }
@@ -57,12 +61,21 @@ function Signup() {
         }
     };
 
+    const clear = ()=>{
+        setUser({
+            fullName: '',
+            email: '',
+            password: '',
+            number: ''
+        });
+    }
+
     return (
         <div className='signup-main-div'>
             <div className='signup-container'>
                 <h2>User Registration</h2>
 
-                <form>
+                <form className='signup-form'>
                     <input
                         type="text"
                         placeholder="Full Name"
@@ -91,13 +104,22 @@ function Signup() {
                         onChange={(e) => setUser({ ...user, number: e.target.value })}
                     />
 
-                    <button
-                        type='button'
-                        onClick={signup}
-                        className='link-btn'
-                    >
-                        Register
-                    </button>
+                    <div className='signup-btn-container'>
+                        <button
+                            type='button'
+                            onClick={signup}
+                            className='link-btn'
+                        >
+                            Register
+                        </button>
+                        <button
+                            type='reset'
+                            onClick={clear}
+                            className='link-btn'
+                        >
+                            Cancle
+                        </button>
+                    </div>
                 </form>
 
                 <Link to='/login'>Already have an account? Login</Link>
