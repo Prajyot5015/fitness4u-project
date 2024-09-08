@@ -115,7 +115,15 @@ function Suplements() {
   const totalPrice = quantity * data[selectedProduct].price;
 
   const handleSetValue = () => {
-    localStorage.setItem("totalPrice", quantity * parseInt(data[selectedProduct].price));
+
+    const productDetails = {
+      name: currentProduct.name,
+      quantity: quantity,
+      totalPrice: quantity * parseInt(currentProduct.price),
+    };
+    localStorage.setItem("productDetails", JSON.stringify(productDetails));
+    
+    // localStorage.setItem("totalPrice", quantity * parseInt(data[selectedProduct].price));
   };
 
   const currentProduct = data[selectedProduct];

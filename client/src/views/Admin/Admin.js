@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Admin.css';
 import MemberTable from '../../componets/MemberTable/MemberTable'
 import toast, { Toaster } from 'react-hot-toast';
+import SellerTable from '../../componets/SellerTable/SellerTable';
 
 const Admin = () => {
   const [navClosed, setNavClosed] = useState(false);
+  const [data, setData] = useState('MemberTable');
+  const [selectedOption, setSelectedOption] = useState('MemberTable');
 
   const toggleNav = () => {
     setNavClosed(!navClosed);
@@ -36,24 +39,32 @@ const Admin = () => {
         <div className={`navcontainer ${navClosed ? 'navclose' : ''}`}>
           <nav className="nav">
             <div className="nav-upper-options">
-              <div className="nav-option option1">
+              <div className={`nav-option ${selectedOption === 'MemberTable' ? 'optionbg' : ''}`}
+                onClick={() => {
+                  setData('MemberTable')
+                  setSelectedOption('MemberTable');
+                }}>
                 <i className="fa-solid fa-users alg"></i>
                 <h3>Members</h3>
               </div>
 
-              <div className="option2 nav-option">
+              <div className={`nav-option ${selectedOption === 'SellerTable' ? 'optionbg' : ''}`}
+                onClick={() => {
+                  setData('SellerTable')
+                  setSelectedOption('SellerTable');
+                }}>
                 <i className="fa-solid fa-cart-shopping alg"></i>
                 <h3>Sellers</h3>
               </div>
 
               <div className="nav-option alogout" onClick={() => {
-                  localStorage.clear();
-                  toast.success('Logged out successfully');
+                localStorage.clear();
+                toast.success('Logged out successfully');
 
-                  setTimeout(() => {
-                    window.location.href = '/adminlogin';
-                  }, 3000);
-                }}>
+                setTimeout(() => {
+                  window.location.href = '/adminlogin';
+                }, 3000);
+              }}>
                 <i className="fa-solid fa-right-from-bracket fa-rotate-180 alg"></i>
                 <h3>Logout</h3>
               </div>
@@ -61,7 +72,7 @@ const Admin = () => {
           </nav>
         </div>
         <div className="main">
-          <MemberTable />
+          {data === 'MemberTable' ? <MemberTable /> : <SellerTable /> }
         </div>
       </div>
 

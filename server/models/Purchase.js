@@ -29,6 +29,14 @@ const purchaseSchema = new Schema({
         type: String,
         required: true
     },
+    pname: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: String,
+        required: true
+    },
     mode: {
         type: String,
         enum: ["UPI", "cash"]
@@ -36,6 +44,12 @@ const purchaseSchema = new Schema({
     totalAmount: {
         type: Number,
         required: true
+    },
+    status: {
+        type: String,
+    },
+    reason: {
+        type: String,
     },
     user: {
         type: Schema.Types.ObjectId,

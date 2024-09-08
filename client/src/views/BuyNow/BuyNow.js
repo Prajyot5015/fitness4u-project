@@ -9,7 +9,9 @@ import toast, { Toaster } from 'react-hot-toast'
 function BuyNow() {
     const [totalPrice, setTotalPrice] = useState(0);
     const [paymentMode, setPaymentMode] = useState('');
-   
+    const [quantity, setQuantity] = useState('');
+    const [pname, setPname] = useState('');
+
 
     const [user, setUser] = useState('')
     const [uname, setUname] = useState("");
@@ -20,6 +22,7 @@ function BuyNow() {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [pincode, setPincode] = useState("");
+    const [status] = useState("Not Yet")
 
     const [canProceed, setCanProceed] = useState(false);
 
@@ -36,22 +39,37 @@ function BuyNow() {
     }, [])
 
     useEffect(() => {
-        const price = localStorage.getItem("totalPrice");
-        if (price) {
-            setTotalPrice(price);
-           // localStorage.removeItem("totalPrice");
+        // const productDetails = JSON.parse(localStorage.getItem("productDetails"));
+        // console.log(productDetails.name, productDetails.quantity, productDetails.totalPrice);
+
+        // const price = localStorage.getItem("totalPrice");
+        // if (price) {
+        //     setTotalPrice(price);
+        //     // localStorage.removeItem("totalPrice");
+        // }
+
+        const productDetails = JSON.parse(localStorage.getItem("productDetails"));
+        if (productDetails) {
+            console.log(productDetails.name, productDetails.quantity, productDetails.totalPrice);
+            
+            // Set total price from product details
+            setTotalPrice(productDetails.totalPrice);
+            setQuantity( productDetails.quantity);
+            setPname(productDetails.name);
+    
+            // Optionally remove it from localStorage if needed
+            // localStorage.removeItem("productDetails");
         }
-        
+
     }, []);
 
     const display = (mode) => {
         setPaymentMode(mode);
         setMode(mode)
-        if(mode === 'cash')
-        {
+        if (mode === 'cash') {
             setTotalPrice(parseInt(totalPrice) + 10)
         }
-        else{
+        else {
             setTotalPrice(parseInt(totalPrice) - 10)
         }
     }
@@ -65,8 +83,11 @@ function BuyNow() {
             city,
             state,
             pincode,
+            pname,
+            quantity,
             mode,
             totalAmount: totalPrice,
+            status,
             user: user._id
         })
 
@@ -80,7 +101,7 @@ function BuyNow() {
             setState('')
             setPincode('')
             setMode('')
-          
+
 
             setTimeout(() => {
                 window.location.href = '/supplememts'
@@ -118,11 +139,6 @@ function BuyNow() {
             toast.error("Please Enter Valide Mobile Number");
             return;
         }
-
-        // if (name && address && email && mobile && city && state && pincode) {
-        //     toast.success("Order Placed!!!");
-        //     return;
-        // }
 
         if (mode === 'cash') {
             addPurchase();
@@ -221,12 +237,12 @@ function BuyNow() {
                                             </a>
                                         </>
                                     </div>
-                                   
-                                        <p className='delivery'>Share Receipt on <a href='tel: 7028112938' className='share-receipt'>7028112938</a></p>
-                                    
+
+                                    <p className='delivery'>Share Receipt on <a href='tel: 7028112938' className='share-receipt'>7028112938</a></p>
+
                                     <div className="option">
                                         <div className="option-content">
-                                            <input  type="radio" name="done" value="Yes"
+                                            <input type="radio" name="done" value="Yes"
                                                 onChange={(e) => setCanProceed(e.target.value)} id="Yes" />
                                             <label htmlFor="UPI" className='label1'>Yes</label>
                                         </div>
@@ -245,7 +261,8 @@ function BuyNow() {
                             )}
                         </div>
 
-                        <h2>Total: ₹ <span id="buy-total">{totalPrice}</span></h2>
+                        <p className='pname'> {pname} </p>
+                        <h3 className='qt'>Quantity : <span className='buy-total'> {quantity} </span> Total: ₹ <span className="buy-total">{totalPrice}</span></h3>
 
                         <div className="btn-container">
                             <button type="button" className="btn" onClick={validate}>Place Order</button>

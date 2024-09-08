@@ -102,6 +102,13 @@ input ,textarea {
 #amount {
     background: #fff;
 }
+.buy-total{
+    font-size: 30px;
+    padding-right: 10px;
+}
+.qt{
+    text-align: center;
+}
 
 .btn-container {
     display: flex;
@@ -131,6 +138,10 @@ input ,textarea {
     margin-left: 0px;
 }
 
+.pname{
+    text-align: center;
+    padding: 10px;
+}
 
 /* Media Query */
 @media screen and (max-width: 678px) {

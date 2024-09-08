@@ -50,6 +50,7 @@ const postMember = async (req, res) => {
 //     })
 // }
 
+
 const getMember = async (req, res) => {
     try {
         const { memberName } = req.query;
