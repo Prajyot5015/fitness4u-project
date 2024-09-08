@@ -5,54 +5,111 @@ import toast, { Toaster } from 'react-hot-toast'
 import { Link } from "react-router-dom";
 import './../../views/Home/Home.css'
 import swal from 'sweetalert';
+import { Drawer } from 'antd'
 
 function Navbar({ active }) {
-    const [msg, setMsg] = useState([]);
+    const [visible, setVisible] = useState(false);
+    const [msg, setMsg] = useState('');
+    const [purchaseMsg, setPurchaseMsg] = useState('');
     const [notification, setNotification] = useState('notification');
 
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
-    // const getMember = async () => {
-    //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/member/${currentUser._id}`);
-    //     // console.log(response.data.data.reason);
-    //     // const msg = response.data.data        
-    //     setMsg(response.data.data)
-
-    //     if (msg.status === 'Accepted') {
-    //         swal({
-    //             title: "Congratulation!",
-    //             text: "Now, You are our Member!",
-    //             icon: "success",
-    //             dangerMode: true
-    //         }).then(() => {
-    //             setNotification('notification red')
-    //         });
-
-    //     }
-    //     else if (msg.status === 'Rejected') {
-    //         swal({
-    //             title: "Sorry!",
-    //             text: msg.reason,
-    //             icon: "error",
-    //             dangerMode: true
-    //         }).then(() => {
-    //             setNotification('notification red')
-    //         });
-    //     }
-    //     else if (msg.status === 'Not Yet') {
-    //         setNotification('notification')
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getMember();
-    // }, [])
-
     useEffect(() => {
-        if (msg.status === 'Accepted' || msg.status === 'Rejected') {
-            setNotification('notificationAnimation');
+        getMember();
+        getPurchase();
+    }, []);
+
+    const getMember = async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/member/${currentUser._id}`);
+            setMsg(response.data.data);
+            if (msg.status === 'Accepted') {
+                setNotification('notificationAnimation red')
+            }
+            else if (msg.status === 'Rejected') {
+                setNotification('notificationAnimation red')
+            }
+            else if (msg.status === 'Not Yet') {
+                setNotification('notification')
+            }
+
+        } catch (error) {
+            console.error("Error fetching member data:", error);
         }
-    }, [msg]);
+    };
+
+    const getPurchase = async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/purchase/${currentUser._id}`);
+            setPurchaseMsg(response.data.data);
+            if (purchaseMsg.status === 'Order Accepted'){
+                setNotification('notificationAnimation red')
+            }
+            else if (purchaseMsg.status === 'Order Rejected') {
+                setNotification('notificationAnimation red')
+            }
+            else if (purchaseMsg.status === 'Not Yet') {
+                setNotification('notification')
+            }
+        } catch (error) {
+            console.error("Error fetching member data:", error);
+        }
+    };
+
+    const showPopupMember = () => {
+        if (msg.status === 'Accepted') {
+            swal({
+                title: "Congratulation!",
+                text: "Now, You are our Member!",
+                icon: "success",
+                dangerMode: true
+            }).then(() => {
+                setNotification('notification red')
+            });
+
+        }
+        else if (msg.status === 'Rejected') {
+            swal({
+                title: "Sorry!",
+                text: msg.reason,
+                icon: "error",
+                dangerMode: true
+            }).then(() => {
+                setNotification('notification red')
+            });
+        }
+        else if (msg.status === 'Not Yet') {
+            setNotification('notification')
+        }
+    }
+
+    const showPopupPurchase = () => {
+        if (purchaseMsg.status === 'Order Accepted') {
+            swal({
+                title: "Thank You!",
+                text: "Your Order is Delivered soon!",
+                icon: "success",
+                dangerMode: true
+            }).then(() => {
+                setNotification('notification red')
+            });
+
+        }
+        else if (purchaseMsg.status === 'Order Rejected') {
+            swal({
+                title: "Sorry!",
+                text: purchaseMsg.reason,
+                icon: "error",
+                dangerMode: true
+            }).then(() => {
+                setNotification('notification red')
+            });
+        }
+        else if (purchaseMsg.status === 'Not Yet') {
+            setNotification('notification')
+        }
+    }
 
     return (
         <div>
@@ -81,10 +138,24 @@ function Navbar({ active }) {
                     </span>
                 </nav>
 
-                {/* <i className={`fa-solid fa-bell ${notification}`} onClick={getMember}></i> */}
-                <i className={`fa-solid fa-bell ${notification}`} ></i>
+                <i className={`fa-solid fa-bell ${notification}`} onClick={() => {
+                    getMember()
+                    setVisible(true)
+                }}></i>
 
             </header>
+
+            <Drawer
+                open={visible}
+                title='Notification'
+                onClose={() => setVisible(false)}
+                className="custom-drawer"
+            >
+                <h3 className='member'>MemberShip  </h3>
+                <p className='mg' onClick={showPopupMember}> {msg.status} MemberShip </p>
+                <h3 className='purchase'>Supplements  </h3>
+                <p className='mg' onClick={showPopupPurchase}> {purchaseMsg.status} </p>
+            </Drawer>
 
             <Toaster />
         </div>
