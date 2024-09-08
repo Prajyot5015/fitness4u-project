@@ -64,6 +64,18 @@ const getPurchaseMember = async (req, res) => {
     }
 };
 
+const getPurchaseId = async (req, res) => {
+    const { id } = req.params
+
+    const purchaseMember = await Purchase.findOne({ user : id})
+
+    res.json({
+        success: purchaseMember ? true : false,
+        data: purchaseMember || null,
+        message: purchaseMember ? "purchaseMember Fetched Successfully" : "purchaseMember Not found"
+    })
+}
+
 
 const putPurchase = async (req, res) => {
 
@@ -91,4 +103,4 @@ const putPurchase = async (req, res) => {
 
 
 
-export { postPurchase, getPurchaseMember, putPurchase}
+export { postPurchase, getPurchaseMember,getPurchaseId, putPurchase}

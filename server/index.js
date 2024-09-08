@@ -6,7 +6,7 @@ dotenv.config();
 
 import { postSignup, postLogin} from "./controllers/user.js";
 import { getMember, getMemberId, postMember, putMember } from "./controllers/member.js";
-import { getPurchaseMember, postPurchase, putPurchase } from "./controllers/purchase.js";
+import { getPurchaseId, getPurchaseMember, postPurchase, putPurchase } from "./controllers/purchase.js";
 import { postAdminLogin, postAdminSignup } from "./controllers/adminlogin.js";
 
 const app = express();
@@ -49,6 +49,7 @@ app.put("/member/:id", putMember)
 
 app.post("/purchase", postPurchase )
 app.get("/purchase", getPurchaseMember )
+app.get("/purchase/:id",getPurchaseId)
 app.put("/purchase/:id", putPurchase)
 
 const PORT = process.env.PORT || 8000;
