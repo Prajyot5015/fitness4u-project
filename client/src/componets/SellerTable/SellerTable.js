@@ -193,7 +193,7 @@ const SellerTable = () => {
                 <div className="box box1">
                     <div className="text">
                         <h2 className="topic-heading">{totalMember}</h2>
-                        <h2 className="topic">Total Members</h2>
+                        <h2 className="topic">Total Sellers</h2>
                     </div>
                     <i className="fa-solid fa-people-group clg"></i>
                 </div>
@@ -201,7 +201,7 @@ const SellerTable = () => {
                 <div className="box box2">
                     <div className="text">
                         <h2 className="topic-heading"> {plus} </h2>
-                        <h2 className="topic">Accepted</h2>
+                        <h2 className="topic">Order Accepted</h2>
                     </div>
                     <i className="fa-solid fa-circle-check clg"></i>
                 </div>
@@ -209,7 +209,7 @@ const SellerTable = () => {
                 <div className="box box3">
                     <div className="text">
                         <h2 className="topic-heading"> {minus} </h2>
-                        <h2 className="topic">Rejected</h2>
+                        <h2 className="topic">Order Rejected</h2>
                     </div>
                     <i className="fa-solid fa-circle-xmark clg"></i>
                 </div>

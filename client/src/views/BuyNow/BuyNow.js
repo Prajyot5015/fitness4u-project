@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
+import swal from 'sweetalert';
 import './BuyNow.css';
 import Navbar from '../../componets/Navbar/Navbar'
 import Footer from '../../componets/Footer/Footer'
@@ -25,6 +26,9 @@ function BuyNow() {
     const [status] = useState("Not Yet")
 
     const [canProceed, setCanProceed] = useState(false);
+    const [paymentOption, setPaymentOption] = useState('')
+
+
 
     useEffect(() => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -51,12 +55,12 @@ function BuyNow() {
         const productDetails = JSON.parse(localStorage.getItem("productDetails"));
         if (productDetails) {
             console.log(productDetails.name, productDetails.quantity, productDetails.totalPrice);
-            
+
             // Set total price from product details
             setTotalPrice(productDetails.totalPrice);
-            setQuantity( productDetails.quantity);
+            setQuantity(productDetails.quantity);
             setPname(productDetails.name);
-    
+
             // Optionally remove it from localStorage if needed
             // localStorage.removeItem("productDetails");
         }
@@ -64,6 +68,8 @@ function BuyNow() {
     }, []);
 
     const display = (mode) => {
+
+        setPaymentOption(mode)
         setPaymentMode(mode);
         setMode(mode)
         if (mode === 'cash') {
@@ -92,23 +98,34 @@ function BuyNow() {
         })
 
         if (response.data.success) {
-            toast.success(response.data.message);
-            setUname("")
-            setEmail('')
-            setNumber('')
-            setAddress('')
-            setCity('')
-            setState('')
-            setPincode('')
-            setMode('')
+            // toast.success(response.data.message);
+            swal({
+                title: "Thank You!",
+                text: "Trainer will Placed your Order as soon as posiible!",
+                icon: "success",
+                // button: "ok",
+            })
+                .then(() => {
+                    setUname("")
+                    setEmail('')
+                    setNumber('')
+                    setAddress('')
+                    setCity('')
+                    setState('')
+                    setPincode('')
+                    setMode('')
 
 
-            setTimeout(() => {
-                window.location.href = '/supplememts'
-            }, 2000)
+                    setTimeout(() => {
+                        window.location.href = '/supplememts'
+                    }, 1000)
+                });
+
 
         } else {
-            toast.error(response.data.message);
+            swal("Sorry, Your Order Can not be Placed...",{
+                dangerMode : true
+            });
         }
 
     }
@@ -123,11 +140,16 @@ function BuyNow() {
         const state = document.getElementById('state').value;
         const pincode = document.getElementById('pincode').value;
 
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const pattern = /^[6-9]\d{9}$/;
 
         if (!name || !address || !email || !mobile || !city || !state || !pincode) {
             toast.error("Please Fill all fields");
+            return;
+        }
+        if (!paymentOption) {
+            toast.error('Please select a payment option');
             return;
         }
 
