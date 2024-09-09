@@ -151,14 +151,14 @@ function Navbar({ active }) {
                 {msg && msg.status ? (
                     <p className='mg' onClick={showPopupMember}>{msg.status} Membership</p>
                 ) : (
-                    <p className='mg'>There is no update</p>
+                    <p className='mgNull'>There is no update</p>
                 )}
                 
                 <h3 className='purchase'>Supplements Updates</h3>
                 {purchaseMsg && purchaseMsg.status ? (
                     <p className='mg' onClick={showPopupPurchase}>{purchaseMsg.status}</p>
                 ) : (
-                    <p className='mg'>There is no update</p>
+                    <p className='mgNull'>There is no update</p>
                 )}
             </Drawer>
 
