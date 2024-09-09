@@ -74,7 +74,7 @@ function Login() {
               onClick={clear}
               className='link-btn'
             >
-              Cancle
+              Cancel
             </button>
           </div>
         </form>
