@@ -13,6 +13,7 @@ import Suplements from './views/Suplements/Suplements';
 import BuyNow from './views/BuyNow/BuyNow';
 import AdminLogin from './views/AdminLogin/AdminLogin';
 import Admin from './views/Admin/Admin';
+import ForgetPassword from './componets/ForgetPassword/ForgetPassword';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/buynow",
     element: <BuyNow />
+  },
+  {
+    path: "/forget-password",
+    element: <ForgetPassword />
   },
 
   {

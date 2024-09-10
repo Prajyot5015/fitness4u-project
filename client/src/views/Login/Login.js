@@ -61,6 +61,8 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+          <Link to='/forget-password' className='forgot'>Forgot Password?</Link>
+
           <div className='login-btn-container'>
           <button
               type='button'
@@ -80,8 +82,6 @@ function Login() {
         </form>
 
         <Link to='/signup' >Don't have an account? Signup</Link>
-
-
 
         <Toaster />
       </div>

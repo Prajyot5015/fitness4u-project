@@ -4,7 +4,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config();
 
-import { postSignup, postLogin, postEmailSend, postChangePassword} from "./controllers/user.js";
+import { postSignup, postLogin, postEmailSend, postChangePassword, postVerifyOtp} from "./controllers/user.js";
 import { getMember, getMemberId, postMember, putMember } from "./controllers/member.js";
 import { getPurchaseId, getPurchaseMember, postPurchase, putPurchase } from "./controllers/purchase.js";
 import { postAdminLogin, postAdminSignup } from "./controllers/adminlogin.js";
@@ -54,6 +54,8 @@ app.put("/purchase/:id", putPurchase)
 
 app.post("/email-send", postEmailSend)
 app.post("/change-password", postChangePassword)
+
+app.post('/verify-otp', postVerifyOtp);
 
 const PORT = process.env.PORT || 8000;
 

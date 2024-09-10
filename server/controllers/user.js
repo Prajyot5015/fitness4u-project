@@ -62,7 +62,6 @@ const postLogin = async (req, res) => {
     }
 };
 
-
 const postEmailSend = async (req, res) => {
     try {
         const { email } = req.body;
@@ -70,35 +69,42 @@ const postEmailSend = async (req, res) => {
         const user = await User.findOne({ email });
 
         if (user) {
-
             let otpcode = Math.floor(1000 + Math.random() * 9000);
 
+           
+            let otpData = await Otp.findOne({ email });
 
-            let otpData = new Otp({
-                email: email,
-                code: otpcode,
-                expiereIn: new Date().getTime() + 5 * 60 * 1000
-            })
+            if (otpData) {
+                otpData.code = otpcode;
+                otpData.expiereIn = new Date().getTime() + 5 * 60 * 1000;  
+                await otpData.save();
+            } else {
+              
+                otpData = new Otp({
+                    email: email,
+                    code: otpcode,
+                    expiereIn: new Date().getTime() + 5 * 60 * 1000
+                });
+                await otpData.save();
+            }
 
-            await otpData.save();
-
+          
             queueEmail(email, otpcode);
-
 
             return res.json({
                 success: true,
-                message: "Please Check Your Email",
+                message: "OTP sent successfully. Please check your email.",
                 data: user
             });
         } else {
             return res.json({
                 success: false,
-                message: "Sorry, This email does not exist!",
+                message: "Sorry, this email does not exist!",
                 data: null
             });
         }
     } catch (error) {
-        console.error("Login error:", error);
+        console.error("Error in sending OTP:", error);
         return res.json({
             success: false,
             message: "Server error",
@@ -108,6 +114,27 @@ const postEmailSend = async (req, res) => {
 };
 
 
+
+const postVerifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+        const otpData = await Otp.findOne({ email, code: otp });
+
+        if (!otpData) {
+            return res.json({ success: false, message: "Invalid OTP code." });
+        }
+
+        const currentTime = new Date().getTime();
+        if (otpData.expiereIn < currentTime) {
+            return res.json({ success: false, message: "OTP code has expired." });
+        }
+
+        return res.json({ success: true, message: "OTP verified." });
+    } catch (error) {
+        console.error("OTP verification error:", error);
+        return res.json({ success: false, message: "Server error" });
+    }
+}
 
 const postChangePassword = async (req, res) => {
     try {
@@ -155,4 +182,4 @@ const postChangePassword = async (req, res) => {
 };
 
 
-export { postSignup, postLogin, postEmailSend, postChangePassword }
+export { postSignup, postLogin, postEmailSend, postChangePassword, postVerifyOtp }
