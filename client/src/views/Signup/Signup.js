@@ -23,6 +23,13 @@ function Signup() {
     };
 
     const signup = async () => {
+
+        if(!user.fullName && !user.email && !user.password && !user.number)
+        {
+            toast.error('Please all Fields.');
+            return;
+        }
+        
         if (!validateEmail(user.email)) {
             toast.error('Please enter a valid email address.');
             return;
