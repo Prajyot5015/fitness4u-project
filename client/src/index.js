@@ -14,6 +14,7 @@ import BuyNow from './views/BuyNow/BuyNow';
 import AdminLogin from './views/AdminLogin/AdminLogin';
 import Admin from './views/Admin/Admin';
 import ForgetPassword from './componets/ForgetPassword/ForgetPassword';
+import Welcome from './views/Welcome/Welcome';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path : "/",
     element : <Home />
+  },
+  {
+    path : "/welcome",
+    element : <Welcome />
   },
   {
     path : "/signup",

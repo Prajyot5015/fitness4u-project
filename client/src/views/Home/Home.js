@@ -22,8 +22,11 @@ function Home() {
             setUser(currentUser)
         }
 
+        // if (!currentUser) {
+        //     window.location.href = '/login'
+        // }
         if (!currentUser) {
-            window.location.href = '/login'
+            window.location.href = '/welcome'
         }
     }, [])
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Login.css"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -29,10 +29,11 @@ function Login() {
     }
   }
 
-  const clear = ()=>{
+  const clear = () => {
     setEmail('')
     setPassword('')
   }
+
 
   return (
     <div className='login-main-div'>
@@ -64,7 +65,7 @@ function Login() {
           <Link to='/forget-password' className='forgot'>Forgot Password?</Link>
 
           <div className='login-btn-container'>
-          <button
+            <button
               type='button'
               onClick={loginNow}
             >
