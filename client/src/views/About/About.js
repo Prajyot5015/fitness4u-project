@@ -120,7 +120,7 @@ function About() {
 
     for (let i = 0; i < vids.length; i++) {
       imgElement.innerHTML += `<div class="imgs">
-            <video height="300px" width="300px" controls autoplay mutedcclassName='videoa'>
+            <video height="300px" width="300px" controls autoplay muted className='videoa'>
               <source src="${vids[i]}" type="video/mp4" />
             </video>
           </div>`;
